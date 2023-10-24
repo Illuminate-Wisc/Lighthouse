@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://dejixlpchetbf"]
+
+[ext_resource type="Script" path="res://src/objects/demo/capsule.gd" id="1_7uery"]
+[ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="2_1cpnx"]
+[ext_resource type="Material" uid="uid://cdpne47sv7pp3" path="res://src/materials/outline.tres" id="3_rhoh8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n48ke"]
+size = Vector3(2, 4, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hd4tb"]
+resource_local_to_scene = true
+next_pass = ExtResource("3_rhoh8")
+albedo_color = Color(0.2, 0, 0.458824, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vm3n8"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_hd4tb")
+
+[node name="Capsule" type="Node3D"]
+script = ExtResource("1_7uery")
+
+[node name="FocusObserver" type="Area3D" parent="."]
+collision_layer = 2
+script = ExtResource("2_1cpnx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusObserver"]
+shape = SubResource("BoxShape3D_n48ke")
+
+[node name="Capsule" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_vm3n8")
+
+[connection signal="focused" from="FocusObserver" to="." method="_on_focus_observer_focused"]
+[connection signal="selected" from="FocusObserver" to="." method="_on_focus_observer_selected"]
+[connection signal="unfocused" from="FocusObserver" to="." method="_on_focus_observer_unfocused"]

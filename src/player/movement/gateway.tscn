@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3oac3dk5enfy"]
+
+[ext_resource type="Script" path="res://src/player/movement/gateway.gd" id="1_76jjj"]
+[ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="1_xqbsx"]
+[ext_resource type="Material" uid="uid://cdpne47sv7pp3" path="res://src/materials/outline.tres" id="3_8rrd4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vest1"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fencx"]
+next_pass = ExtResource("3_8rrd4")
+albedo_color = Color(0.627451, 0.321569, 0.176471, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_otdlx"]
+material = SubResource("StandardMaterial3D_fencx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no7c6"]
+albedo_color = Color(0.364706, 0.180392, 0.101961, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_77mkb"]
+material = SubResource("StandardMaterial3D_no7c6")
+
+[node name="Gateway" type="Node3D"]
+script = ExtResource("1_76jjj")
+
+[node name="FocusObserver" type="Area3D" parent="."]
+collision_layer = 3
+script = ExtResource("1_xqbsx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusObserver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_vest1")
+
+[node name="Door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 0.125, 0, 1, 0)
+mesh = SubResource("BoxMesh_otdlx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.4, 1.05884, 0)
+mesh = SubResource("SphereMesh_77mkb")
+
+[connection signal="focused" from="FocusObserver" to="." method="_on_focus_observer_focused"]
+[connection signal="selected" from="FocusObserver" to="." method="_on_focus_observer_selected"]
+[connection signal="unfocused" from="FocusObserver" to="." method="_on_focus_observer_unfocused"]

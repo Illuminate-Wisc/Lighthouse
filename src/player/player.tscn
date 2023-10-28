@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://t2jpofj28c67"]
+
+[ext_resource type="Script" path="res://src/player/player.gd" id="1_6m7cw"]
+[ext_resource type="Script" path="res://src/player/raycast.gd" id="2_nde7q"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sv4qp"]
+
+[node name="Player" type="Node3D"]
+script = ExtResource("1_6m7cw")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+cull_mask = 1048573
+current = true
+fov = 100.0
+
+[node name="RayCast" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -20)
+collision_mask = 2
+collide_with_areas = true
+script = ExtResource("2_nde7q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 2
+mesh = SubResource("CapsuleMesh_sv4qp")
+skeleton = NodePath("../Camera3D")
+
+[node name="Hud" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WhiteRectangle" type="ColorRect" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785397
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(20, 20)
+mouse_filter = 2
+
+[node name="BlackRectangle" type="ColorRect" parent="Hud"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785397
+scale = Vector2(0.15, 0.15)
+pivot_offset = Vector2(20, 20)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="changed_target" from="Camera3D/RayCast" to="." method="_on_ray_cast_changed_target"]

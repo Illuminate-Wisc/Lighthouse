@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://b1mlpon8c3lsy"]
+
+[node name="Settings_tab_container" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 50.0
+offset_right = -100.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+
+[node name="Setting1" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Setting1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Setting1/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Setting1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "one"
+
+[node name="Label2" type="Label" parent="TabContainer/Setting1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "two"
+
+[node name="Label3" type="Label" parent="TabContainer/Setting1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "three"
+
+[node name="Label4" type="Label" parent="TabContainer/Setting1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "four"
+
+[node name="Label5" type="Label" parent="TabContainer/Setting1/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "five"
+
+[node name="Setting2" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Setting2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Setting2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Setting2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "1"
+
+[node name="Label2" type="Label" parent="TabContainer/Setting2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "2"
+
+[node name="Label3" type="Label" parent="TabContainer/Setting2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "3"
+
+[node name="Label4" type="Label" parent="TabContainer/Setting2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "4"
+
+[node name="Label5" type="Label" parent="TabContainer/Setting2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "5"

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b52t472isl26c"]
 
 [ext_resource type="Script" path="res://src/scenes/main_menu/main_menu.gd" id="1_b0ypv"]
+[ext_resource type="Texture2D" uid="uid://dvgwo14dobyqc" path="res://src/images/background.webp" id="2_em6u5"]
 [ext_resource type="PackedScene" uid="uid://cjyxx74ydckc4" path="res://src/scenes/main_menu/settings.tscn" id="3_u3p27"]
 [ext_resource type="Theme" uid="uid://cd4s3l1payt30" path="res://src/scenes/main_menu/button_theme.tres" id="4_4kkmf"]
-[ext_resource type="Texture2D" uid="uid://dvgwo14dobyqc" path="res://src/scenes/main_menu/background.webp" id="5_akwts"]
 
 [node name="Interface" type="Control"]
 layout_mode = 3
@@ -17,7 +17,7 @@ script = ExtResource("1_b0ypv")
 [node name="MainBackground" type="Sprite2D" parent="."]
 position = Vector2(800, 450)
 scale = Vector2(1.273, 1.273)
-texture = ExtResource("5_akwts")
+texture = ExtResource("2_em6u5")
 
 [node name="Settings" parent="." instance=ExtResource("3_u3p27")]
 visible = false

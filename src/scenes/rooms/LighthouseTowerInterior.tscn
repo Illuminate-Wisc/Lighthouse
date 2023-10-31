@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://bx0hyovyryr5s"]
+
+[ext_resource type="PackedScene" uid="uid://c3oac3dk5enfy" path="res://src/player/movement/gateway.tscn" id="1_gfcd0"]
+[ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="2_g8mdv"]
+[ext_resource type="PackedScene" uid="uid://coupwxx4ruxcy" path="res://src/models/Crate.glb" id="3_dwoiv"]
+[ext_resource type="PackedScene" uid="uid://c1kna8ytwr8w0" path="res://src/models/Barrel.glb" id="4_yyvq6"]
+[ext_resource type="PackedScene" uid="uid://b5qdtt3dyi04g" path="res://src/models/Sack.glb" id="5_jd8s4"]
+[ext_resource type="PackedScene" uid="uid://dcx8oe6ef87q2" path="res://src/models/SpiralStaircase.glb" id="6_cu767"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5uktw"]
+flip_faces = true
+top_radius = 8.0
+bottom_radius = 8.0
+height = 20.0
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5qnw"]
+albedo_color = Color(0.482353, 0.482353, 0.482353, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d4mxf"]
+top_radius = 8.0
+bottom_radius = 8.0
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cr10u"]
+albedo_color = Color(0.25098, 0.133333, 0.00392157, 1)
+roughness = 0.8
+
+[node name="LighthouseTowerInterior" type="Node3D"]
+
+[node name="Gateway" parent="." instance=ExtResource("1_gfcd0")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -7.84071)
+to_scene = "res://src/scenes/rooms/LivingCorridor.tscn"
+
+[node name="Walls" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+mesh = SubResource("CylinderMesh_5uktw")
+surface_material_override/0 = SubResource("StandardMaterial3D_w5qnw")
+
+[node name="Player" parent="." instance=ExtResource("2_g8mdv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.891, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.75281, 0)
+light_energy = 8.0
+omni_range = 24.4953
+
+[node name="OmniLight3D" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.9288, 0)
+light_energy = 8.0
+omni_range = 24.4953
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.27379, 0)
+light_energy = 8.0
+omni_range = 24.4953
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.110627, 0)
+mesh = SubResource("CylinderMesh_d4mxf")
+surface_material_override/0 = SubResource("StandardMaterial3D_cr10u")
+
+[node name="Crate" parent="." instance=ExtResource("3_dwoiv")]
+transform = Transform3D(0.791394, 0, 0.611306, 0, 1, 0, -0.611306, 0, 0.791394, -3.78141, 1.23163, -5.57983)
+
+[node name="Crate2" parent="." instance=ExtResource("3_dwoiv")]
+transform = Transform3D(0.787409, 0, 0.616432, 0, 1, 0, -0.616432, 0, 0.787409, -5.47954, 1.23435, -4.14873)
+
+[node name="Barrel" parent="." instance=ExtResource("4_yyvq6")]
+transform = Transform3D(0.697894, 0, 0.0542636, 0, 0.7, 0, -0.0542636, 0, 0.697894, -5.41619, 3.18782, -4.06233)
+
+[node name="Sack" parent="." instance=ExtResource("5_jd8s4")]
+transform = Transform3D(0.393459, 0.297298, 0.0824845, -0.01042, 0.146402, -0.477973, -0.308353, 0.374406, 0.121402, -4.73523, 3.059, -5.9535)
+
+[node name="Sack2" parent="." instance=ExtResource("5_jd8s4")]
+transform = Transform3D(0.432578, 0.185207, 0.169039, 0.0141978, 0.318435, -0.385224, -0.250349, 0.338079, 0.270237, -3.94001, 2.71329, -6.25871)
+
+[node name="SpiralStaircase" parent="." instance=ExtResource("6_cu767")]
+transform = Transform3D(4.82633, 0, 6.38017, 0, 8, 0, -6.38017, 0, 4.82633, 0, 0, 0)

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://deasigfxsmhl"
+path="res://.godot/imported/book_set.obj-f240eed7a6708cb57bfe8bdf1977d4e1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/book_set.obj-f240eed7a6708cb57bfe8bdf1977d4e1.mesh"]
+
+source_file="res://src/objects/obj/book_set.obj"
+dest_files=["res://.godot/imported/book_set.obj-f240eed7a6708cb57bfe8bdf1977d4e1.mesh", "res://.godot/imported/book_set.obj-f240eed7a6708cb57bfe8bdf1977d4e1.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtepqs810pgup"]
+
+[ext_resource type="PackedScene" uid="uid://dmtsj7k61ll2e" path="res://src/models/PineTree.glb" id="1_p6tc2"]
+
+[node name="trees" type="Node3D"]
+
+[node name="PineTree" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.0269032, 0, 0.795716)
+
+[node name="PineTree2" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.621315, 0, 0.104251, 0, 0.63, 0, -0.104251, 0, 0.621315, -1.89977, 0, 0.481307)
+
+[node name="PineTree3" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.693691, 0, 0.473701, 0, 0.84, 0, -0.473701, 0, 0.693691, 1.50305, 0, 0.57487)
+
+[node name="PineTree4" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.768083, 0, 0.223716, 0, 0.8, 0, -0.223716, 0, 0.768083, -0.502024, 0, 3.51529)
+
+[node name="PineTree9" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 2.97305, 0, 1.29381)
+
+[node name="PineTree10" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.50435, 0, 3.15069)
+
+[node name="PineTree11" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.806307, 0, -0.352518, 0, 0.88, 0, 0.352518, 0, 0.806307, -3.9949, 0, 4.55315)
+
+[node name="PineTree12" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.12597, 0, 5.10045)
+
+[node name="PineTree13" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.63, 0, 0, 0, 0.63, 0, 0, 0, 0.63, 0.552266, 0, 4.56708)
+
+[node name="PineTree5" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.782475, 0, 0.166534, 0, 0.8, 0, -0.166534, 0, 0.782475, -2.16067, 0, 2.78361)
+
+[node name="PineTree6" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -1.8458, 0, 4.4909)
+
+[node name="PineTree7" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -2.91369, 0, 4.56488)
+
+[node name="PineTree8" parent="." instance=ExtResource("1_p6tc2")]
+
+[node name="PineTree14" parent="." instance=ExtResource("1_p6tc2")]
+transform = Transform3D(1.06, 0, 0, 0, 1.06, 0, 0, 0, 1.06, -3.08698, 0.0144587, 2.94133)

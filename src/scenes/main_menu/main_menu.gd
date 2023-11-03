@@ -1,5 +1,8 @@
 extends Control
 
+
+@export var start_scene = "res://src/scenes/world/world.tscn"
+
 @onready var main_buttons = $MainButtons as Control
 @onready var settings = $Settings as Settings
 
@@ -32,3 +35,7 @@ func _on_settings_pressed():
 func _on_return_button_pressed():
 	main_buttons.visible = true
 	settings.visible = false
+
+
+func _on_start_pressed():
+	SceneSwitcher.to(start_scene)

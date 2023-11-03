@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bv3ttfub1blib"
-path="res://.godot/imported/Living Corridors.glb-03fb79fe2686063d0af8168ba4356992.scn"
+path="res://.godot/imported/Living Corridors.glb-e42865a44dc02e7136e530bced45f81c.scn"
 
 [deps]
 
-source_file="res://src/scenes/rooms/Living Corridors.glb"
-dest_files=["res://.godot/imported/Living Corridors.glb-03fb79fe2686063d0af8168ba4356992.scn"]
+source_file="res://src/models/Living Corridors.glb"
+dest_files=["res://.godot/imported/Living Corridors.glb-e42865a44dc02e7136e530bced45f81c.scn"]
 
 [params]
 

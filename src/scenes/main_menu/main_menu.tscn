@@ -52,5 +52,6 @@ layout_mode = 2
 theme = ExtResource("4_4kkmf")
 text = "quit"
 
+[connection signal="pressed" from="MainButtons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainButtons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainButtons/Quit" to="." method="_on_quit_button_pressed"]

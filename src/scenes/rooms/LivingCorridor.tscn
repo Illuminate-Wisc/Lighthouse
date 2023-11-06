@@ -10,12 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://dq1enqjxh7jew" path="res://src/models/kaykit_furniture_bits/Assets/gltf/armchair_pillows.gltf" id="8_dlrff"]
 [ext_resource type="PackedScene" uid="uid://doteh7jheqffe" path="res://src/models/kaykit_furniture_bits/Assets/gltf/table_medium.gltf" id="9_npsfp"]
 [ext_resource type="PackedScene" uid="uid://7nahr0p7ejyn" path="res://src/models/kaykit_furniture_bits/Assets/gltf/book_set.gltf" id="10_1he1a"]
+
 [ext_resource type="Script" path="res://src/player/movement/gateway.gd" id="11_o1uxe"]
 [ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="12_1d75e"]
 [ext_resource type="Shader" path="res://src/shaders/outline.gdshader" id="13_jnjhr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vest1"]
 size = Vector3(1, 2, 1)
+
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vqwgk"]
 render_priority = 0

@@ -7,11 +7,11 @@ extends Node3D
 
 @onready var outline_mat = $Door.get_active_material(0).next_pass
 
-var outline_size: float = 0.0
+var outline_size: float = outline_size_unfocused
 
 
 func _ready():
-	outline_mat.set_shader_parameter("outline_size", 0.0)
+	outline_mat.set_shader_parameter("outline_size", outline_size_unfocused)
 
 
 func set_outline_size(size: float):

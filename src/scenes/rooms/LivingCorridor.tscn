@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://oaw85ho08gsv"]
 
-[ext_resource type="PackedScene" uid="uid://bv3ttfub1blib" path="res://src/scenes/rooms/Living Corridors.glb" id="1_lxfa3"]
+[ext_resource type="PackedScene" uid="uid://bv3ttfub1blib" path="res://src/models/Living Corridors.glb" id="1_lxfa3"]
 [ext_resource type="PackedScene" uid="uid://c3oac3dk5enfy" path="res://src/player/movement/gateway.tscn" id="2_r18nj"]
 [ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="3_4mn0l"]
 [ext_resource type="PackedScene" uid="uid://chunrgetac0uq" path="res://src/models/kaykit_furniture_bits/Assets/gltf/cabinet_medium.gltf" id="4_xo5ml"]
@@ -10,48 +10,28 @@
 [ext_resource type="PackedScene" uid="uid://dq1enqjxh7jew" path="res://src/models/kaykit_furniture_bits/Assets/gltf/armchair_pillows.gltf" id="8_dlrff"]
 [ext_resource type="PackedScene" uid="uid://doteh7jheqffe" path="res://src/models/kaykit_furniture_bits/Assets/gltf/table_medium.gltf" id="9_npsfp"]
 [ext_resource type="PackedScene" uid="uid://7nahr0p7ejyn" path="res://src/models/kaykit_furniture_bits/Assets/gltf/book_set.gltf" id="10_1he1a"]
-[ext_resource type="Script" path="res://src/player/movement/gateway.gd" id="11_ha38o"]
-[ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="12_no6h3"]
+
+[ext_resource type="Script" path="res://src/player/movement/gateway.gd" id="11_o1uxe"]
+[ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="12_1d75e"]
+[ext_resource type="Shader" path="res://src/shaders/outline.gdshader" id="13_jnjhr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vest1"]
 size = Vector3(1, 2, 1)
 
-[sub_resource type="Shader" id="Shader_lhrkb"]
-code = "// From: https://github.com/anunknowperson/Godot4SimpleOutline
-shader_type spatial;
-render_mode unshaded, cull_front;
 
-uniform bool enable = true;
-uniform float outline_size = 0.01;
-uniform vec4 color : source_color = vec4(1.0);
-
-void vertex() {
-    if (enable) {
-        VERTEX += normalize(VERTEX) * outline_size;
-    }
-}
-
-void fragment() {
-    if (enable) {
-        ALBEDO = color.rgb;
-    }
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hl8rb"]
-resource_local_to_scene = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vqwgk"]
 render_priority = 0
-shader = SubResource("Shader_lhrkb")
+shader = ExtResource("13_jnjhr")
 shader_parameter/enable = true
-shader_parameter/outline_size = 0.01
+shader_parameter/outline_size = 0.05
 shader_parameter/color = Color(1, 1, 1, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2g773"]
-next_pass = SubResource("ShaderMaterial_hl8rb")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fencx"]
+next_pass = SubResource("ShaderMaterial_vqwgk")
 albedo_color = Color(0.627451, 0.321569, 0.176471, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_h3e4j"]
-material = SubResource("StandardMaterial3D_2g773")
+[sub_resource type="BoxMesh" id="BoxMesh_otdlx"]
+material = SubResource("StandardMaterial3D_fencx")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no7c6"]
 albedo_color = Color(0.364706, 0.180392, 0.101961, 1)
@@ -69,7 +49,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.76287, -1.84148, 1.9312)
 to_scene = "res://src/scenes/world/world.tscn"
 
 [node name="Player" parent="." instance=ExtResource("3_4mn0l")]
-transform = Transform3D(0.158577, 0, -0.121874, 0, 0.2, 0, 0.121874, 0, 0.158577, -0.756503, -1.07398, -0.31056)
+transform = Transform3D(0.301297, 0, -0.231561, 0, 0.38, 0, 0.231561, 0, 0.301297, -0.756503, -1.21058, -0.31056)
 
 [node name="cabinet_medium" parent="." instance=ExtResource("4_xo5ml")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.852436, -1.83845, -3.26772)
@@ -108,13 +88,14 @@ transform = Transform3D(0.399885, 0, -0.916565, 0, 1, 0, 0.916565, 0, 0.399885, 
 transform = Transform3D(-0.912821, 0.229948, -0.337464, 0.215681, 0.973203, 0.0797358, 0.346756, 0, -0.937955, 1.55414, -0.486133, 1.40822)
 
 [node name="Gateway2" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.0355, -1.95262, -0.224544)
-script = ExtResource("11_ha38o")
+transform = Transform3D(-4.37081e-08, -5.34022e-10, 1, -0.012217, 0.999925, 0, -0.999925, -0.012217, -4.37114e-08, -1.811, -1.841, 0.917)
+script = ExtResource("11_o1uxe")
 to_scene = "res://src/scenes/rooms/LighthouseTowerInterior.tscn"
+outline_size_unfocused = 0.05
 
 [node name="FocusObserver" type="Area3D" parent="Gateway2"]
 collision_layer = 3
-script = ExtResource("12_no6h3")
+script = ExtResource("12_1d75e")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Gateway2/FocusObserver"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -122,7 +103,7 @@ shape = SubResource("BoxShape3D_vest1")
 
 [node name="Door" type="MeshInstance3D" parent="Gateway2"]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 0.125, 0, 1, 0)
-mesh = SubResource("BoxMesh_h3e4j")
+mesh = SubResource("BoxMesh_otdlx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Gateway2"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.4, 1.05884, 0)

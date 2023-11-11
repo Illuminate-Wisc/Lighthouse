@@ -21,6 +21,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/illuminate-wisc/lighthouse/godot:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: 'Checkout'

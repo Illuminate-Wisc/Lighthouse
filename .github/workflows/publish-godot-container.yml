@@ -31,14 +31,15 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=semver,pattern={{version}},value=v1.0.0
 
       - name: 'Build and push Docker image'
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: |
-            type=semver,pattern={{version}},value=v1.0.0
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             GODOT_VERSION=4.1.2

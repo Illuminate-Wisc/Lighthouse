@@ -37,7 +37,8 @@ jobs:
         with:
           context: .
           push: true
-          tags: latest
+          tags: |
+            type=semver,pattern={{version}},value=v1.0.0
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             GODOT_VERSION=4.1.2

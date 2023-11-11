@@ -8,8 +8,11 @@ RUN apt update && apt install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists
 
-ARG GODOT_PLATFORM="linux.x86_64"
-ARG GODOT_NAME="${GODOT_VERSION}-${GODOT_RELEASE_TYPE}"
+ARG GODOT_VERSION="4.1.2"
+ARG GODOT_RELEASE_TYPE="stable"
+
+ENV GODOT_NAME="${GODOT_VERSION}-${GODOT_RELEASE_TYPE}"
+ENV GODOT_PLATFORM="linux.x86_64"
 
 RUN curl -fsSL https://github.com/godotengine/godot/releases/download/${GODOT_NAME}/Godot_v${GODOT_NAME}_${GODOT_PLATFORM}.zip -o godot.zip
 RUN curl -fsSL https://github.com/godotengine/godot/releases/download/${GODOT_NAME}/Godot_v${GODOT_NAME}_export_templates.tpz -o templates.tpz

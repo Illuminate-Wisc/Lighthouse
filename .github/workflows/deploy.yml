@@ -20,7 +20,7 @@ jobs:
 
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/${{ github.repository}}/godot:latest
+      image: ghcr.io/illuminate-wisc/lighthouse/godot:latest
 
     steps:
       - name: 'Checkout'

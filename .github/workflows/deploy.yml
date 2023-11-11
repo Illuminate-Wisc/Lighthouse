@@ -33,6 +33,11 @@ jobs:
       - name: 'Set up Pages'
         uses: actions/configure-pages@v3
 
+      - name: 'Set up Build'
+        run: |
+          mkdir -p ~/.local/share/godot/export_templates/
+          ln -s /root/.local/share/godot/export_templates/* ~/.local/share/godot/export_templates/
+
       - name: 'Build web project'
         run: |
           mkdir -v dist

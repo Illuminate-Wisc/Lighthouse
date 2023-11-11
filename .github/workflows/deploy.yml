@@ -20,7 +20,7 @@ jobs:
 
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}/godot:latest
+      image: ghcr.io/${{ github.repository}}/godot:latest
 
     steps:
       - name: 'Checkout'

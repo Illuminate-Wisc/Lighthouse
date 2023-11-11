@@ -14,6 +14,8 @@ ARG GODOT_RELEASE_TYPE="stable"
 ENV GODOT_NAME="${GODOT_VERSION}-${GODOT_RELEASE_TYPE}"
 ENV GODOT_PLATFORM="linux.x86_64"
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN curl -fsSL https://github.com/godotengine/godot/releases/download/${GODOT_NAME}/Godot_v${GODOT_NAME}_${GODOT_PLATFORM}.zip -o godot.zip && \
     unzip godot.zip && \
     mv Godot_v${GODOT_NAME}_${GODOT_PLATFORM} /usr/local/bin/godot && \
@@ -24,4 +26,3 @@ RUN curl -fsSL https://github.com/godotengine/godot/releases/download/${GODOT_NA
     mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE_TYPE} && \
     mv web_release.zip ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE_TYPE} && \
     rm templates.tpz
-

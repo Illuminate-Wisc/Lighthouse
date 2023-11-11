@@ -14,16 +14,14 @@ ARG GODOT_RELEASE_TYPE="stable"
 ENV GODOT_NAME="${GODOT_VERSION}-${GODOT_RELEASE_TYPE}"
 ENV GODOT_PLATFORM="linux.x86_64"
 
-RUN curl -fsSL https://github.com/godotengine/godot/releases/download/${GODOT_NAME}/Godot_v${GODOT_NAME}_${GODOT_PLATFORM}.zip -o godot.zip
-RUN curl -fsSL https://github.com/godotengine/godot/releases/download/${GODOT_NAME}/Godot_v${GODOT_NAME}_export_templates.tpz -o templates.tpz
+RUN curl -fsSL https://github.com/godotengine/godot/releases/download/${GODOT_NAME}/Godot_v${GODOT_NAME}_${GODOT_PLATFORM}.zip -o godot.zip && \
+    unzip godot.zip && \
+    mv Godot_v${GODOT_NAME}_${GODOT_PLATFORM} /usr/local/bin/godot && \
+    rm godot.zip
 
-RUN mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE_TYPE}
-
-RUN unzip godot.zip
-RUN mv Godot_v${GODOT_NAME}_${GODOT_PLATFORM} /usr/local/bin/godot
-RUN rm godot.zip
-
-RUN unzip templates.tpz
-RUN mv templates/web_release.zip ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE_TYPE}
-RUN rm templates.tpz && rm -rf templates
+RUN curl -fsSL https://github.com/godotengine/godot/releases/download/${GODOT_NAME}/Godot_v${GODOT_NAME}_export_templates.tpz -o templates.tpz && \
+    unzip -j templates.tpz templates/web_release.zip && \
+    mkdir -p ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE_TYPE} && \
+    mv web_release.zip ~/.local/share/godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE_TYPE} && \
+    rm templates.tpz
 

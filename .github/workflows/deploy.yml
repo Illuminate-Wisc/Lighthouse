@@ -35,7 +35,7 @@ jobs:
           godot -v --export-release "Web"
 
       - name: 'Upload artifacts'
-        uses: actions/upload-pages-artifacts@v2
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
 

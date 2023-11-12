@@ -1,13 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://bx0hyovyryr5s"]
+[gd_scene load_steps=12 format=3 uid="uid://bx0hyovyryr5s"]
 
 [ext_resource type="PackedScene" uid="uid://c3oac3dk5enfy" path="res://src/player/movement/gateway.tscn" id="1_gfcd0"]
 [ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="2_g8mdv"]
+[ext_resource type="Material" uid="uid://dmt36u6uu6q8d" path="res://src/materials/Lighthouse_floor_mat.tres" id="3_co3bv"]
 [ext_resource type="PackedScene" uid="uid://coupwxx4ruxcy" path="res://src/models/Crate.glb" id="3_dwoiv"]
 [ext_resource type="PackedScene" uid="uid://c1kna8ytwr8w0" path="res://src/models/Barrel.glb" id="4_yyvq6"]
 [ext_resource type="PackedScene" uid="uid://b5qdtt3dyi04g" path="res://src/models/Sack.glb" id="5_jd8s4"]
 [ext_resource type="PackedScene" uid="uid://dcx8oe6ef87q2" path="res://src/models/SpiralStaircase.glb" id="6_cu767"]
-[ext_resource type="Script" path="res://src/player/movement/gateway.gd" id="7_iih6h"]
-[ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="8_5srqc"]
+[ext_resource type="PackedScene" uid="uid://cnwl2y5dwifo0" path="res://src/player/movement/Portal.tscn" id="7_1ct0i"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_5uktw"]
 flip_faces = true
@@ -23,56 +23,6 @@ albedo_color = Color(0.482353, 0.482353, 0.482353, 1)
 top_radius = 8.0
 bottom_radius = 8.0
 height = 0.1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cr10u"]
-albedo_color = Color(0.25098, 0.133333, 0.00392157, 1)
-roughness = 0.8
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vest1"]
-size = Vector3(1, 2, 1)
-
-[sub_resource type="Shader" id="Shader_tlurw"]
-code = "// From: https://github.com/anunknowperson/Godot4SimpleOutline
-shader_type spatial;
-render_mode unshaded, cull_front;
-
-uniform bool enable = true;
-uniform float outline_size = 0.01;
-uniform vec4 color : source_color = vec4(1.0);
-
-void vertex() {
-    if (enable) {
-        VERTEX += normalize(VERTEX) * outline_size;
-    }
-}
-
-void fragment() {
-    if (enable) {
-        ALBEDO = color.rgb;
-    }
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4volb"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_tlurw")
-shader_parameter/enable = true
-shader_parameter/outline_size = 0.01
-shader_parameter/color = Color(1, 1, 1, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spbti"]
-next_pass = SubResource("ShaderMaterial_4volb")
-albedo_color = Color(0.627451, 0.321569, 0.176471, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_arero"]
-material = SubResource("StandardMaterial3D_spbti")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no7c6"]
-albedo_color = Color(0.364706, 0.180392, 0.101961, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_77mkb"]
-material = SubResource("StandardMaterial3D_no7c6")
 
 [node name="LighthouseTowerInterior" type="Node3D"]
 
@@ -106,7 +56,7 @@ omni_range = 24.4953
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.110627, 0)
 mesh = SubResource("CylinderMesh_d4mxf")
-surface_material_override/0 = SubResource("StandardMaterial3D_cr10u")
+surface_material_override/0 = ExtResource("3_co3bv")
 
 [node name="Crate" parent="." instance=ExtResource("3_dwoiv")]
 transform = Transform3D(0.791394, 0, 0.611306, 0, 1, 0, -0.611306, 0, 0.791394, -3.78141, 1.23163, -5.57983)
@@ -126,27 +76,6 @@ transform = Transform3D(0.432578, 0.185207, 0.169039, 0.0141978, 0.318435, -0.38
 [node name="SpiralStaircase" parent="." instance=ExtResource("6_cu767")]
 transform = Transform3D(4.82633, 0, 6.38017, 0, 8, 0, -6.38017, 0, 4.82633, 0, 0, 0)
 
-[node name="Gateway2" type="Node3D" parent="."]
-transform = Transform3D(-0.707244, 0, 1.87078, 0, 2, 0, -1.87078, 0, -0.707244, 6.76086, 0.829464, -2.77728)
-script = ExtResource("7_iih6h")
+[node name="Portal" parent="." instance=ExtResource("7_1ct0i")]
+transform = Transform3D(1.5, 0, 0, 0, 5, 0, 0, 0, 1.5, 4.09199, 0.043576, -4.2457)
 to_scene = "res://src/scenes/rooms/Lens_room.tscn"
-
-[node name="FocusObserver" type="Area3D" parent="Gateway2"]
-collision_layer = 3
-script = ExtResource("8_5srqc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gateway2/FocusObserver"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_vest1")
-
-[node name="Door" type="MeshInstance3D" parent="Gateway2"]
-transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 0.125, 0, 1, 0)
-mesh = SubResource("BoxMesh_arero")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gateway2"]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.4, 1.05884, 0)
-mesh = SubResource("SphereMesh_77mkb")
-
-[connection signal="focused" from="Gateway2/FocusObserver" to="Gateway2" method="_on_focus_observer_focused" flags=18]
-[connection signal="selected" from="Gateway2/FocusObserver" to="Gateway2" method="_on_focus_observer_selected" flags=18]
-[connection signal="unfocused" from="Gateway2/FocusObserver" to="Gateway2" method="_on_focus_observer_unfocused" flags=18]

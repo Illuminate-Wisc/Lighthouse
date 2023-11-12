@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://cbf0sakv3t4rt"]
 
-[ext_resource type="Material" uid="uid://n8pvlfp8uhvt" path="res://src/materials/water.tres" id="1_bxjjq"]
+[ext_resource type="Material" uid="uid://cpgbc1qnnwttt" path="res://src/materials/water.tres" id="1_bxjjq"]
 [ext_resource type="PackedScene" uid="uid://boll4qqpt711m" path="res://src/models/House.glb" id="2_y8wse"]
 [ext_resource type="PackedScene" uid="uid://dtepqs810pgup" path="res://src/scenes/world/trees.tscn" id="3_7dpur"]
 [ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="4_iml0i"]

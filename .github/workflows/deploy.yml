@@ -1,0 +1,54 @@
+name: 'Deploy to GitHub Pages'
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  packages: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/illuminate-wisc/lighthouse/godot
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v3
+
+      - name: 'Set up Pages'
+        uses: actions/configure-pages@v3
+
+      - name: 'Set up Build'
+        run: |
+          mkdir -p ~/.local/share/godot/export_templates/
+          ln -s /root/.local/share/godot/export_templates/* ~/.local/share/godot/export_templates/
+
+      - name: 'Build web project'
+        run: |
+          mkdir -v dist
+          godot --headless -v --export-release "Web"
+          mv serviceworkers/*.js dist
+
+      - name: 'Upload artifacts'
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./dist
+
+      - name: 'Deploy to GitHub Pages'
+        id: deployment
+        uses: actions/deploy-pages@v2

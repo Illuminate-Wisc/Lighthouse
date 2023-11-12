@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lighthouse</title>
+        <meta charset="UTF-8">
+        <style>
+            :root {
+                --bgColor: white;
+                --textColor: #1f2c28;
+                --canvasBgColor: #1f2c28;
+                --shadowColor: rgba(0, 0, 0, 0.3);
+                --outlineColor: skyblue;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --bgColor: #0d1117;
+                    --textColor: white;
+                    --shadowColor: rgba(255, 255, 255, 0.05);
+                    --outlineColor: slategray;
+                }
+            }
+
+            body {
+                margin: 0;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+                "Segoe UI Emoji";
+                color: var(--textColor);
+                background-color: var(--bgColor);
+            }
+
+            main {
+                display: flex;
+                position: relative;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            canvas {
+                width: 100% !important;
+                height: 100% !important;
+                border-radius: inherit;
+                transition: box-shadow 0.3s;
+            }
+
+            canvas:focus {
+                outline: 2px solid var(--outlineColor);
+            }
+
+            #canvas-wrapper {
+                position: relative;
+                background-color: var(--canvasBgColor);
+                width: 1600px !important;
+                height: auto !important;
+                aspect-ratio: 1600 / 900;
+                max-width: 90%;
+                border-radius: 10px;
+                box-shadow: 0 5px 4px var(--shadowColor);
+            }
+            
+            h1 {
+                text-align: center;
+            }
+        </style>
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <main>
+            <h1>Lighthouse</h1>
+            <div id="canvas-wrapper">
+                <canvas id="godot-canvas"></canvas>
+            </div>
+        </main>
+        <script src="index.js"></script>
+        <script>
+            const canvas = document.getElementById("godot-canvas");
+            const engine = new Engine({"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":5896480,"index.wasm":27907743},"focusCanvas":true,"gdextensionLibs":[]});
+            engine.startGame({ canvas });
+        </script>
+    </body>
+</html>
+

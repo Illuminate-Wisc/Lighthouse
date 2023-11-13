@@ -7,55 +7,55 @@ extends Node3D
 
 @onready var outline_mat = $Door.get_active_material(0).next_pass
 
-var outline_size: float = 0.0
+var outline_size: float = outline_size_unfocused
 
 
 func _ready():
-    outline_mat.set_shader_parameter("outline_size", 0.0)
+	outline_mat.set_shader_parameter("outline_size", outline_size_unfocused)
 
 
 func set_outline_size(size: float):
-    outline_size = size
-    outline_mat.set_shader_parameter("outline_size", outline_size)
+	outline_size = size
+	outline_mat.set_shader_parameter("outline_size", outline_size)
 
 
 func get_focus_progress() -> float:
-    return (outline_size - outline_size_unfocused) / outline_size_focused
+	return (outline_size - outline_size_unfocused) / outline_size_focused
 
 
 func get_focus_transition_duration() -> float:
-    var progress = get_focus_progress()
+	var progress = get_focus_progress()
 
-    return (1 - progress) * outline_transition_duration
+	return (1 - progress) * outline_transition_duration
 
 
 func get_unfocus_transition_duration() -> float:
-    var progress = get_focus_progress()
+	var progress = get_focus_progress()
 
-    return progress * outline_transition_duration
+	return progress * outline_transition_duration
 
 
 func _on_focus_observer_focused():
-    var duration = get_focus_transition_duration()
+	var duration = get_focus_transition_duration()
 
-    create_tween().tween_method(
-            set_outline_size,
-            outline_size,
-            outline_size_focused,
-            duration
-        )
+	create_tween().tween_method(
+			set_outline_size,
+			outline_size,
+			outline_size_focused,
+			duration
+		)
 
 
 func _on_focus_observer_unfocused():
-    var duration = get_unfocus_transition_duration()
+	var duration = get_unfocus_transition_duration()
 
-    create_tween().tween_method(
-            set_outline_size,
-            outline_size,
-            outline_size_unfocused,
-            duration
-        )
+	create_tween().tween_method(
+			set_outline_size,
+			outline_size,
+			outline_size_unfocused,
+			duration
+		)
 
 
 func _on_focus_observer_selected():
-    SceneSwitcher.to(to_scene)
+	SceneSwitcher.to(to_scene)

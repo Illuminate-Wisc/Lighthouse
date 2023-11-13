@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dscb2my2bl1y0"]
+
+[ext_resource type="PackedScene" uid="uid://jd05to0gwaee" path="res://src/models/lens_room_models/assets/glb/lens_room_window.glb" id="2_ply3t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jv87j"]
+size = Vector3(1, 25, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wcj7"]
+size = Vector3(0.1, 25, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m4edd"]
+size = Vector3(0.1, 11.3, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8lhg5"]
+size = Vector3(0.1, 1.8, 15)
+
+[node name="Wall_group" type="Node3D"]
+
+[node name="Wall" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.40094, 0)
+shape = SubResource("BoxShape3D_jv87j")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.49826, 8.6)
+mesh = SubResource("BoxMesh_0wcj7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.37869, -0.0730629)
+mesh = SubResource("BoxMesh_m4edd")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00393486, 9.10759, -0.0732174)
+mesh = SubResource("BoxMesh_8lhg5")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.003, -2.48347, -8.6)
+mesh = SubResource("BoxMesh_0wcj7")
+
+[node name="lens_room_window" parent="." instance=ExtResource("2_ply3t")]
+transform = Transform3D(1, 0, 0, 0, 25, 0, 0, 0, 20, 0, -10.352, 0)

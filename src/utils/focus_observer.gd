@@ -8,12 +8,12 @@ signal selected
 
 
 func focus() -> void:
-    focused.emit()
+	focused.emit()
 
 
 func unfocus() -> void:
-    unfocused.emit()
+	unfocused.emit()
 
 
 func select() -> void:
-    selected.emit()
+	selected.emit()

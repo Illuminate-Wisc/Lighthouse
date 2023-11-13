@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvgwo14dobyqc"
-path="res://.godot/imported/background.webp-1adbbd6912a573653123ca9c4e3d9deb.ctex"
+uid="uid://b47mk5fqcm2tl"
+path="res://.godot/imported/Home_Key_Light.png-74f3ebbba73713366df2c623a0bfd143.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/scenes/main_menu/background.webp"
-dest_files=["res://.godot/imported/background.webp-1adbbd6912a573653123ca9c4e3d9deb.ctex"]
+source_file="res://src/images/Keyboard Icons/Home_Key_Light.png"
+dest_files=["res://.godot/imported/Home_Key_Light.png-74f3ebbba73713366df2c623a0bfd143.ctex"]
 
 [params]
 

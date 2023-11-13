@@ -1,14 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3oac3dk5enfy"]
+[gd_scene load_steps=10 format=3 uid="uid://c3oac3dk5enfy"]
 
 [ext_resource type="Script" path="res://src/player/movement/gateway.gd" id="1_76jjj"]
 [ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="1_xqbsx"]
-[ext_resource type="Material" uid="uid://cdpne47sv7pp3" path="res://src/materials/outline.tres" id="3_8rrd4"]
+[ext_resource type="Shader" path="res://src/shaders/outline.gdshader" id="3_ywctf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vest1"]
 size = Vector3(1, 2, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vqwgk"]
+render_priority = 0
+shader = ExtResource("3_ywctf")
+shader_parameter/enable = true
+shader_parameter/outline_size = 0.05
+shader_parameter/color = Color(1, 1, 1, 0)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fencx"]
-next_pass = ExtResource("3_8rrd4")
+next_pass = SubResource("ShaderMaterial_vqwgk")
 albedo_color = Color(0.627451, 0.321569, 0.176471, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_otdlx"]
@@ -22,6 +29,7 @@ material = SubResource("StandardMaterial3D_no7c6")
 
 [node name="Gateway" type="Node3D"]
 script = ExtResource("1_76jjj")
+outline_size_unfocused = 0.05
 
 [node name="FocusObserver" type="Area3D" parent="."]
 collision_layer = 3

@@ -10,8 +10,12 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	settings.exit_button_signal.connect(_on_return_button_pressed)
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
+ 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -35,7 +39,10 @@ func _on_settings_pressed():
 func _on_return_button_pressed():
 	main_buttons.visible = true
 	settings.visible = false
+<<<<<<< Updated upstream
 
 
 func _on_start_pressed():
 	SceneSwitcher.to(start_scene)
+=======
+>>>>>>> Stashed changes

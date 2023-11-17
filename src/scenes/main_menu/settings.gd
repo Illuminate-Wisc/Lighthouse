@@ -1,33 +1,42 @@
+extends MarginContainer
 class_name Settings
-extends Control
-#@export var text_color : Color
+
 signal exit_button_signal
 
-# Assuming your Label node is named 'Label' and is a direct child of the HBoxContainer
-@onready var sizeTextLabel = $SettingTabs/Text/MarginContainer/TextSetting/SizeContainer/TextSize
-@onready var colorTextLabel = $SettingTabs/Text/MarginContainer/TextSetting/ColorContainer/TextColor
-@onready var textSetting = $SettingTabs/Text/MarginContainer/TextSetting
-@onready var slider = $SettingTabs/Text/MarginContainer/TextSetting/SizeContainer/TextSizeSlider
+
+var main_theme := preload("res://src/ui/themes/main/main_theme.tres")
+var user_text_bg := preload("res://src/ui/themes/main/panel/user_text_background_panel.tres")
+
+@onready var root_node := ($PanelContainer).owner
+@onready var font_size_slider := $PanelContainer/PaddedContainer/SettingsContainer/FontSizeSlider
+@onready var font_color_picker := $PanelContainer/PaddedContainer/SettingsContainer/GridContainer/FontColorPicker
+@onready var background_color_picker := $PanelContainer/PaddedContainer/SettingsContainer/GridContainer/BackgroundColorPicker
+@onready var font_size_readout := $PanelContainer/PaddedContainer/SettingsContainer/FontSizeReadout
+
+
+func _ready():
+    font_size_slider.value = main_theme.get_font_size("font_size", "UserTextFont")
+    font_color_picker.color = main_theme.get_color("font_color", "UserTextFont")
+    background_color_picker.color = user_text_bg.bg_color
+
+
+func _process(_delta):
+    if Input.is_action_just_pressed("ui_cancel"):
+        root_node.visible = not root_node.visible
+
 
 func _on_exit_button_pressed():
-	exit_button_signal.emit()
-
-func _on_color_picker_button_color_changed(color: Color):
-	for child in textSetting.get_children():
-		if child is Control:
-			child.set_modulate(color)
-
-func _on_text_size_slider_value_changed(value):
-	for child in textSetting.get_children():
-		# Check if the child is a Control node and has a theme font size property
-		if child is Control and child.has_theme_font_size_override("font_size"):
-			# Remove the existing font size override
-			child.remove_theme_font_size_override("font_size")
-			sizeTextLabel.remove_theme_font_size_override("font_size")
-			colorTextLabel.remove_theme_font_size_override("font_size")
-		# Apply the new font size override
-		child.add_theme_font_size_override("font_size", int(value))
-		sizeTextLabel.add_theme_font_size_override("font_size", int(value))
-		colorTextLabel.add_theme_font_size_override("font_size", int(value))
+    exit_button_signal.emit()
 
 
+func _on_font_size_slider_value_changed(value):
+    main_theme.set_font_size("font_size", "UserTextFont", value)
+    font_size_readout.text = str(value) + " px"
+
+
+func _on_font_color_picker_color_changed(color):
+    main_theme.set_color("font_color", "UserTextFont", color)
+
+
+func _on_background_color_picker_color_changed(color):
+    user_text_bg.bg_color = color

@@ -9,6 +9,7 @@ class_name Player
 @export var default_pitch = 0.0
 
 @onready var raycast: RayCast3D = $Camera3D/RayCast
+@onready var settings_menu := $CanvasLayer/Settings
 
 var rotation_vel = 0
 var pitch_tween: Tween
@@ -34,16 +35,21 @@ func tween_pitch(to_pitch: float, duration: float = pitch_duration):
 
 
 func _process(delta):
+	if abs(rotation_vel) > rotation_min_vel:
+		rotate_y(delta * rotation_vel)
+
+		rotation_vel *= rotation_damping
+
+
+	if settings_menu.visible:
+		return
+
+    
 	if Input.is_action_pressed("look_left"):
 		rotation_vel = rotation_speed
 
 	if Input.is_action_pressed("look_right"):
 		rotation_vel = -rotation_speed
-
-	if abs(rotation_vel) > rotation_min_vel:
-		rotate_y(delta * rotation_vel)
-
-		rotation_vel *= rotation_damping
 
 
 	if Input.is_action_pressed("look_down"):
@@ -63,4 +69,8 @@ func _on_ray_cast_changed_target(new_target: FocusObserver):
 	if new_target.get_parent().name == "Gateway":
 		# TODO: display destination name as text
 		pass
+
+
+func _on_settings_exit_button_signal():
+	settings_menu.visible = false
 

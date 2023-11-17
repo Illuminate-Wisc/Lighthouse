@@ -10,8 +10,7 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	settings.exit_button_signal.connect(_on_return_button_pressed)
-
-
+ 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel"):

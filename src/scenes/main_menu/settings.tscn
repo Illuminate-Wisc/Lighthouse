@@ -1,48 +1,122 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjyxx74ydckc4"]
 
 [ext_resource type="Script" path="res://src/scenes/main_menu/settings.gd" id="1_lhugb"]
-[ext_resource type="PackedScene" uid="uid://b1mlpon8c3lsy" path="res://src/scenes/main_menu/settings_tab_container.tscn" id="2_a8lx0"]
+[ext_resource type="FontFile" uid="uid://bb4uxcchk4gou" path="res://src/scenes/main_menu/PTSerif-Regular.ttf" id="2_iav4w"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 1200.0
+offset_bottom = 800.0
 script = ExtResource("1_lhugb")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1000, 800)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+color = Color(0.431373, 0.431373, 0.431373, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="SettingTabs" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+clip_tabs = false
+
+[node name="Text" type="TabBar" parent="SettingTabs"]
 layout_mode = 2
-theme_override_constants/separation = -40
+theme_override_font_sizes/font_size = 12
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SettingTabs/Text"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="TextSetting" type="GridContainer" parent="SettingTabs/Text/MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Options"
-horizontal_alignment = 1
 
-[node name="Settings_tab_container" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_a8lx0")]
+[node name="DisplaySize" type="Label" parent="SettingTabs/Text/MarginContainer/TextSetting"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 40
+text = "Text Setting"
 
-[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(120, 40)
+[node name="TextFontOptionButton" type="OptionButton" parent="SettingTabs/Text/MarginContainer/TextSetting"]
+custom_minimum_size = Vector2(2.08165e-12, 60)
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+size_flags_stretch_ratio = 1.32
+theme_override_font_sizes/font_size = 25
+item_count = 2
+selected = 0
+popup/item_0/text = "Serif"
+popup/item_0/id = 0
+popup/item_1/text = "Sans-serif"
+popup/item_1/id = 1
+
+[node name="SizeContainer" type="HBoxContainer" parent="SettingTabs/Text/MarginContainer/TextSetting"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextSize" type="Label" parent="SettingTabs/Text/MarginContainer/TextSetting/SizeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.63
+theme_override_fonts/font = ExtResource("2_iav4w")
+theme_override_font_sizes/font_size = 25
+text = "Text Size"
+
+[node name="TextSizeSlider" type="HSlider" parent="SettingTabs/Text/MarginContainer/TextSetting/SizeContainer"]
+custom_minimum_size = Vector2(500, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+min_value = 10.0
+max_value = 50.0
+value = 24.0
+
+[node name="ColorContainer" type="HBoxContainer" parent="SettingTabs/Text/MarginContainer/TextSetting"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TextColor" type="Label" parent="SettingTabs/Text/MarginContainer/TextSetting/ColorContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.63
+theme_override_fonts/font = ExtResource("2_iav4w")
+theme_override_font_sizes/font_size = 25
+text = "Text Color"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="SettingTabs/Text/MarginContainer/TextSetting/ColorContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+
+[node name="ExitButton" type="Button" parent="SettingTabs/Text/MarginContainer/TextSetting"]
+custom_minimum_size = Vector2(130, 65)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_font_sizes/font_size = 27
 text = "Exit"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="value_changed" from="SettingTabs/Text/MarginContainer/TextSetting/SizeContainer/TextSizeSlider" to="." method="_on_text_size_slider_value_changed"]
+[connection signal="color_changed" from="SettingTabs/Text/MarginContainer/TextSetting/ColorContainer/ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="pressed" from="SettingTabs/Text/MarginContainer/TextSetting/ExitButton" to="." method="_on_exit_button_pressed"]

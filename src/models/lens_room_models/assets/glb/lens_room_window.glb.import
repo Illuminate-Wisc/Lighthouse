@@ -32,7 +32,11 @@ _subresources={
 "materials": {
 "Material.002": {
 "use_external/enabled": true,
-"use_external/path": "res://src/scenes/rooms/Lens_room/window_mat.tres"
+"use_external/path": "res://src/materials/window_mat.tres"
+},
+"Material.003": {
+"use_external/enabled": false,
+"use_external/path": "res://src/materials/outline.tres"
 }
 }
 }

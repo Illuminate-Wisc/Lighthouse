@@ -21,7 +21,6 @@ texture = ExtResource("2_em6u5")
 
 [node name="Settings" parent="." instance=ExtResource("3_u3p27")]
 visible = false
-layout_mode = 1
 
 [node name="MainButtons" type="VBoxContainer" parent="."]
 layout_mode = 1

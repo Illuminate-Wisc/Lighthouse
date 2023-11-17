@@ -14,61 +14,61 @@ var theta: float = 0
 
 
 func _ready():
-    outline_mat.set_shader_parameter("outline_size", 0.0)
+	outline_mat.set_shader_parameter("outline_size", 0.0)
 
 
 func _physics_process(delta):
-    if move:
-        theta += PI / 2 * delta
-        position.y = init_y + sin(theta) / 2
+	if move:
+		theta += PI / 2 * delta
+		position.y = init_y + sin(theta) / 2
 
 
 func set_outline_size(size: float):
-    outline_size = size
-    outline_mat.set_shader_parameter("outline_size", outline_size)
+	outline_size = size
+	outline_mat.set_shader_parameter("outline_size", outline_size)
 
 
 func get_focus_progress() -> float:
-    return (outline_size - outline_size_unfocused) / outline_size_focused
+	return (outline_size - outline_size_unfocused) / outline_size_focused
 
 
 func get_focus_transition_duration() -> float:
-    var progress = get_focus_progress()
+	var progress = get_focus_progress()
 
-    return (1 - progress) * outline_transition_duration
+	return (1 - progress) * outline_transition_duration
 
 
 func get_unfocus_transition_duration() -> float:
-    var progress = get_focus_progress()
+	var progress = get_focus_progress()
 
-    return progress * outline_transition_duration
+	return progress * outline_transition_duration
 
 
 func _on_focus_observer_focused():
-    move = true
+	move = true
 
-    var duration = get_focus_transition_duration()
+	var duration = get_focus_transition_duration()
 
-    create_tween().tween_method(
-            set_outline_size,
-            outline_size,
-            outline_size_focused,
-            duration
-        )
+	create_tween().tween_method(
+			set_outline_size,
+			outline_size,
+			outline_size_focused,
+			duration
+		)
 
 
 func _on_focus_observer_unfocused():
-    move = false
+	move = false
 
-    var duration = get_unfocus_transition_duration()
+	var duration = get_unfocus_transition_duration()
 
-    create_tween().tween_method(
-            set_outline_size,
-            outline_size,
-            outline_size_unfocused,
-            duration
-        )
+	create_tween().tween_method(
+			set_outline_size,
+			outline_size,
+			outline_size_unfocused,
+			duration
+		)
 
 
 func _on_focus_observer_selected():
-    rotation.x += PI / 4
+	rotation.x += PI / 4

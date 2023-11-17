@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b52t472isl26c"]
 
+[ext_resource type="Theme" uid="uid://bm780b5r6xff3" path="res://src/ui/themes/main/main_theme.tres" id="1_7kme3"]
 [ext_resource type="Script" path="res://src/scenes/main_menu/main_menu.gd" id="1_b0ypv"]
 [ext_resource type="Texture2D" uid="uid://dvgwo14dobyqc" path="res://src/images/background.webp" id="2_em6u5"]
 [ext_resource type="PackedScene" uid="uid://cjyxx74ydckc4" path="res://src/scenes/main_menu/settings.tscn" id="3_u3p27"]
-[ext_resource type="Theme" uid="uid://cd4s3l1payt30" path="res://src/scenes/main_menu/button_theme.tres" id="4_4kkmf"]
 
 [node name="Interface" type="Control"]
 layout_mode = 3
@@ -12,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_7kme3")
 script = ExtResource("1_b0ypv")
 
 [node name="MainBackground" type="Sprite2D" parent="."]
@@ -19,38 +20,97 @@ position = Vector2(800, 450)
 scale = Vector2(1.273, 1.273)
 texture = ExtResource("2_em6u5")
 
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0196078, 0.0431373, 0.109804, 0.227451)
+
 [node name="Settings" parent="." instance=ExtResource("3_u3p27")]
 visible = false
+layout_mode = 1
 
-[node name="MainButtons" type="VBoxContainer" parent="."]
+[node name="MainButtonsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_right = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="spacer" type="Control" parent="MainButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Start" type="Button" parent="MainButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
+text = "Start"
+
+[node name="spacer2" type="Control" parent="MainButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="spacer4" type="Control" parent="MainButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainButtonsContainer"]
+layout_mode = 2
+
+[node name="Options" type="Button" parent="MainButtonsContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonSecondary"
+text = "Settings"
+
+[node name="spacer5" type="Control" parent="MainButtonsContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.01
+
+[node name="Quit" type="Button" parent="MainButtonsContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ButtonSecondary"
+text = "Quit"
+
+[node name="spacer3" type="Control" parent="MainButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -238.0
-offset_top = -46.0
-offset_right = 239.0
-offset_bottom = 119.0
+offset_left = -477.0
+offset_top = -170.0
+offset_right = 477.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(238.5, 46.5)
-alignment = 1
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 96
+text = "Project  Lighthouse"
 
-[node name="Start" type="Button" parent="MainButtons"]
-layout_mode = 2
-text = "start the game"
-
-[node name="Settings" type="Button" parent="MainButtons"]
-layout_mode = 2
-text = "settings"
-
-[node name="Quit" type="Button" parent="MainButtons"]
-layout_mode = 2
-theme = ExtResource("4_4kkmf")
-text = "quit"
-
-[connection signal="pressed" from="MainButtons/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MainButtons/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MainButtons/Quit" to="." method="_on_quit_button_pressed"]
+[connection signal="exit_button_signal" from="Settings" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="MainButtonsContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtonsContainer/HBoxContainer/Options" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtonsContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

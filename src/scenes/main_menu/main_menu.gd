@@ -34,10 +34,5 @@ func _on_settings_pressed():
 func _on_return_button_pressed():
 	main_buttons.visible = true
 	settings.visible = false
-<<<<<<< HEAD
-=======
-
-
 func _on_start_pressed():
 	SceneSwitcher.to(start_scene)
->>>>>>> 668b9d1cc5e5c33a9a7bce1d8c7694b1f281c484

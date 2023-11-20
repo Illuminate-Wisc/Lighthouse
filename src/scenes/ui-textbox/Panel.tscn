@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ck2hfxgb78whi"]
+
+[node name="Panel" type="Panel"]
+anchors_preset = -1
+anchor_right = 0.897
+anchor_bottom = 0.358
+offset_right = -1435.2
+offset_bottom = -322.2

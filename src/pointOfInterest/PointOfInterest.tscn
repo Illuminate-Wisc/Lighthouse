@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxyukv1jqli5a"]
+
+[ext_resource type="Script" path="res://src/pointOfInterest/PointOfInterest.gd" id="1_bu47k"]
+[ext_resource type="PackedScene" uid="uid://bir05ignr5jhx" path="res://src/pointOfInterest/questionMark.glb" id="1_tsfwn"]
+[ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="2_504qw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ng6ce"]
+size = Vector3(1.3406, 18.9053, 1)
+
+[node name="PointOfInterest" type="Node3D"]
+script = ExtResource("1_bu47k")
+
+[node name="questionMark" parent="." instance=ExtResource("1_tsfwn")]
+
+[node name="FocusObserver" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175869, 0, 0)
+collision_layer = 3
+script = ExtResource("2_504qw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FocusObserver"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_ng6ce")
+
+[connection signal="focused" from="FocusObserver" to="." method="_on_focus_observer_focused"]
+[connection signal="selected" from="FocusObserver" to="." method="_on_focus_observer_selected"]
+[connection signal="unfocused" from="FocusObserver" to="." method="_on_focus_observer_unfocused"]

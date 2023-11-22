@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bswsd1af8c8vo" path="res://src/images/sea.jpg" id="3_tbfo6"]
 [ext_resource type="PackedScene" uid="uid://bls3tvej5btdj" path="res://src/models/lens_room_models/assets/glb/stairs.glb" id="5_rwxa7"]
 [ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="5_w1emc"]
-[ext_resource type="PackedScene" uid="uid://cnwl2y5dwifo0" path="res://src/player/movement/Portal.tscn" id="6_cldai"]
+[ext_resource type="PackedScene" uid="uid://bjv0vc26spvlo" path="res://src/player/movement/Nav.tscn" id="6_y3y2x"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pxb5e"]
 radius = 20.0
@@ -55,16 +55,16 @@ transform = Transform3D(-0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, -0.5, 8.62282,
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 17.1648, 9, 0.748386)
 
 [node name="lens_room_light" parent="." instance=ExtResource("3_pv3iw")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.1, 0)
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, -4.21293, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xkouf")
 
 [node name="stairs" parent="." instance=ExtResource("5_rwxa7")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 6.664, -1.39715, -8.697)
+transform = Transform3D(-2.17266, 0, 1.23675, 0, 2.5, 0, -1.23675, 0, -2.17266, -11.0707, -1.39715, 9.32443)
 
 [node name="Player" parent="." instance=ExtResource("5_w1emc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.26396, 5.547, 2.50719)
+transform = Transform3D(0.434635, 0, 3.97632, 0, 4, 0, -3.97632, 0, 0.434635, 13.8352, 1.70032, 5.72228)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.351735, 8.47934, 4.02331e-07)
@@ -73,6 +73,7 @@ light_energy = 10.697
 light_specular = 15.045
 omni_range = 17.632
 
-[node name="Portal" parent="." instance=ExtResource("6_cldai")]
-transform = Transform3D(3, 0, 0, 0, 8, 0, 0, 0, 3, 1, 0, -10)
+[node name="Nav" parent="." instance=ExtResource("6_y3y2x")]
+transform = Transform3D(2.50768, 0, 5.45083, 0, 6, 0, -5.45083, 0, 2.50768, -4.97052, 5.71242, 13.2207)
 to_scene = "res://src/scenes/rooms/LighthouseTowerInterior.tscn"
+description = "Bottom of Lighthouse"

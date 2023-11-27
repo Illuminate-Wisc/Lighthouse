@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://t2jpofj28c67"]
+[gd_scene load_steps=12 format=3 uid="uid://t2jpofj28c67"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_6m7cw"]
 [ext_resource type="Script" path="res://src/player/raycast.gd" id="2_nde7q"]
 [ext_resource type="Theme" uid="uid://bm780b5r6xff3" path="res://src/ui/themes/main/main_theme.tres" id="3_vjetf"]
 [ext_resource type="Texture2D" uid="uid://bont0hj8flycr" path="res://src/images/Keyboard Icons/Arrow_Down_Key_Light.png" id="7_5c3ff"]
 [ext_resource type="Texture2D" uid="uid://d2l7u6vqhma3u" path="res://src/images/Keyboard Icons/Arrow_Left_Key_Light.png" id="8_q8rfx"]
+[ext_resource type="StyleBox" uid="uid://bwu3nd1ssttmt" path="res://src/ui/themes/main/panel/user_text_background_panel.tres" id="9_7dkuw"]
 [ext_resource type="PackedScene" uid="uid://cjyxx74ydckc4" path="res://src/scenes/main_menu/settings.tscn" id="9_s07dc"]
 [ext_resource type="Texture2D" uid="uid://bnhe866i00kxo" path="res://src/images/Keyboard Icons/Arrow_Right_Key_Light.png" id="9_vqoh3"]
 [ext_resource type="Texture2D" uid="uid://1rejoyahy8hm" path="res://src/images/Keyboard Icons/Arrow_Up_Key_Light.png" id="10_wajyt"]
@@ -175,6 +176,29 @@ offset_bottom = 804.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("11_kme07")
+
+[node name="Desc" type="MarginContainer" parent="CanvasLayer/Hud"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -151.5
+offset_right = 151.5
+offset_bottom = 103.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 10
+
+[node name="DescContainer" type="PanelContainer" parent="CanvasLayer/Hud/Desc"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("9_7dkuw")
+
+[node name="DescLabel" type="Label" parent="CanvasLayer/Hud/Desc/DescContainer"]
+layout_mode = 2
+theme_type_variation = &"UserTextFont"
+text = "Description"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("9_s07dc")]
 visible = false

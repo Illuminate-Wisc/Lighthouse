@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bx0hyovyryr5s"]
+[gd_scene load_steps=14 format=3 uid="uid://bx0hyovyryr5s"]
 
-[ext_resource type="PackedScene" uid="uid://c3oac3dk5enfy" path="res://src/player/movement/gateway.tscn" id="1_gfcd0"]
 [ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="2_g8mdv"]
 [ext_resource type="Material" uid="uid://dmt36u6uu6q8d" path="res://src/materials/Lighthouse_floor_mat.tres" id="3_co3bv"]
 [ext_resource type="PackedScene" uid="uid://coupwxx4ruxcy" path="res://src/models/Crate.glb" id="3_dwoiv"]
 [ext_resource type="PackedScene" uid="uid://c1kna8ytwr8w0" path="res://src/models/Barrel.glb" id="4_yyvq6"]
 [ext_resource type="PackedScene" uid="uid://b5qdtt3dyi04g" path="res://src/models/Sack.glb" id="5_jd8s4"]
 [ext_resource type="PackedScene" uid="uid://dcx8oe6ef87q2" path="res://src/models/SpiralStaircase.glb" id="6_cu767"]
-[ext_resource type="PackedScene" uid="uid://cnwl2y5dwifo0" path="res://src/player/movement/Portal.tscn" id="7_1ct0i"]
+[ext_resource type="PackedScene" uid="uid://2ai2vxrxhxtq" path="res://src/models/Door.glb" id="8_2n0f5"]
+[ext_resource type="PackedScene" uid="uid://bjv0vc26spvlo" path="res://src/player/movement/Nav.tscn" id="9_4nmqg"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_5uktw"]
 flip_faces = true
@@ -24,11 +24,19 @@ top_radius = 8.0
 bottom_radius = 8.0
 height = 0.1
 
-[node name="LighthouseTowerInterior" type="Node3D"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adi1x"]
+transparency = 1
+cull_mode = 1
+albedo_color = Color(1, 1, 1, 0.0509804)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 10.0
 
-[node name="Gateway" parent="." instance=ExtResource("1_gfcd0")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -7.84071)
-to_scene = "res://src/scenes/rooms/LivingCorridor.tscn"
+[sub_resource type="SphereMesh" id="SphereMesh_f7wqj"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_adi1x")
+
+[node name="LighthouseTowerInterior" type="Node3D"]
 
 [node name="Walls" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
@@ -38,20 +46,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_w5qnw")
 [node name="Player" parent="." instance=ExtResource("2_g8mdv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.891, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.75281, 0)
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0094, 0)
 light_energy = 8.0
-omni_range = 24.4953
-
-[node name="OmniLight3D" type="OmniLight3D" parent="OmniLight3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.9288, 0)
-light_energy = 8.0
-omni_range = 24.4953
-
-[node name="OmniLight3D2" type="OmniLight3D" parent="OmniLight3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.27379, 0)
-light_energy = 8.0
-omni_range = 24.4953
+omni_range = 23.27
+omni_attenuation = 0.732043
 
 [node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.110627, 0)
@@ -64,8 +63,38 @@ transform = Transform3D(0.791394, 0, 0.611306, 0, 1, 0, -0.611306, 0, 0.791394, 
 [node name="Crate2" parent="." instance=ExtResource("3_dwoiv")]
 transform = Transform3D(0.787409, 0, 0.616432, 0, 1, 0, -0.616432, 0, 0.787409, -5.47954, 1.23435, -4.14873)
 
+[node name="Crate3" parent="." instance=ExtResource("3_dwoiv")]
+transform = Transform3D(-0.626074, 0, 1.2578, 0, 1.405, 0, -1.2578, 0, -0.626074, -6.27241, 1.61909, 0.764068)
+
+[node name="Crate4" parent="." instance=ExtResource("3_dwoiv")]
+transform = Transform3D(-0.822035, 0, 0.569437, 0, 1, 0, -0.569437, 0, -0.822035, -4.73171, 1.19485, 3.26027)
+
+[node name="Crate5" parent="." instance=ExtResource("3_dwoiv")]
+transform = Transform3D(-0.323322, 0, 0.381396, 0, 0.5, 0, -0.381396, 0, -0.323322, -4.67444, 2.6613, 3.10843)
+
+[node name="Crate6" parent="." instance=ExtResource("3_dwoiv")]
+transform = Transform3D(-0.685026, 0, 0.163733, 0, 0.5, 0, -0.237412, 0, -0.472432, 5.88622, 0.575845, 2.60711)
+
+[node name="Crate7" parent="." instance=ExtResource("3_dwoiv")]
+transform = Transform3D(-0.723763, 0, -0.0291915, 0, 0.5, 0, 0.0423277, 0, -0.499147, 5.49174, 0.575845, 3.91248)
+
+[node name="Crate8" parent="." instance=ExtResource("3_dwoiv")]
+transform = Transform3D(-0.59334, 0, 0.287324, 0, 0.5, 0, -0.41662, 0, -0.4092, 4.31814, 0.575845, 4.99513)
+
 [node name="Barrel" parent="." instance=ExtResource("4_yyvq6")]
 transform = Transform3D(0.697894, 0, 0.0542636, 0, 0.7, 0, -0.0542636, 0, 0.697894, -5.41619, 3.18782, -4.06233)
+
+[node name="Barrel5" parent="." instance=ExtResource("4_yyvq6")]
+transform = Transform3D(0.697894, 0, 0.0542636, 0, 0.7, 0, -0.0542636, 0, 0.697894, 4.15483, 1.09664, -1.32306)
+
+[node name="Barrel2" parent="." instance=ExtResource("4_yyvq6")]
+transform = Transform3D(0.697894, 0, 0.0542636, 0, 0.7, 0, -0.0542636, 0, 0.697894, 1.08603, 1.09951, 5.38348)
+
+[node name="Barrel4" parent="." instance=ExtResource("4_yyvq6")]
+transform = Transform3D(0.697894, 0, 0.0542636, 0, 0.7, 0, -0.0542636, 0, 0.697894, -3.34325, 1.09951, 5.95539)
+
+[node name="Barrel3" parent="." instance=ExtResource("4_yyvq6")]
+transform = Transform3D(0.996991, 0, 0.0775194, 0, 1, 0, -0.0775194, 0, 0.996991, -0.941462, 1.5177, 6.37282)
 
 [node name="Sack" parent="." instance=ExtResource("5_jd8s4")]
 transform = Transform3D(0.393459, 0.297298, 0.0824845, -0.01042, 0.146402, -0.477973, -0.308353, 0.374406, 0.121402, -4.73523, 3.059, -5.9535)
@@ -76,6 +105,29 @@ transform = Transform3D(0.432578, 0.185207, 0.169039, 0.0141978, 0.318435, -0.38
 [node name="SpiralStaircase" parent="." instance=ExtResource("6_cu767")]
 transform = Transform3D(4.82633, 0, 6.38017, 0, 8, 0, -6.38017, 0, 4.82633, 0, 0, 0)
 
-[node name="Portal" parent="." instance=ExtResource("7_1ct0i")]
-transform = Transform3D(1.5, 0, 0, 0, 5, 0, 0, 0, 1.5, 4.09199, 0.043576, -4.2457)
+[node name="Sack3" parent="." instance=ExtResource("5_jd8s4")]
+transform = Transform3D(0.690966, 0, -0.328316, 0, 0.765, 0, 0.328316, 0, 0.690966, -6.90241, 0.285134, -2.34946)
+
+[node name="Sack4" parent="." instance=ExtResource("5_jd8s4")]
+transform = Transform3D(0.747636, 0, -0.162068, 0, 0.765, 0, 0.162068, 0, 0.747636, -6.90241, 0.847046, -2.34946)
+
+[node name="NavLens" parent="." instance=ExtResource("9_4nmqg")]
+transform = Transform3D(-1.96868, 0, -1.54087, 0, 2.5, 0, 1.54087, 0, -1.96868, 4.1482, 3.16695, -4.19262)
 to_scene = "res://src/scenes/rooms/Lens_room.tscn"
+description = "Lens Room"
+
+[node name="NavKeeper" parent="." instance=ExtResource("9_4nmqg")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.0367024, 3.16695, -6.04526)
+to_scene = "res://src/scenes/rooms/LivingCorridor.tscn"
+description = "Keeper's Room"
+
+[node name="Orb" parent="NavKeeper" index="1"]
+mesh = SubResource("SphereMesh_f7wqj")
+
+[node name="Arrow" parent="NavKeeper" index="2"]
+transform = Transform3D(0.2, 2.13163e-15, 0, -1.84604e-15, 0.173205, -0.1, -1.06581e-15, 0.1, 0.173205, 0.0024067, 0, 0.0402293)
+
+[node name="Door" parent="." instance=ExtResource("8_2n0f5")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -7.8653)
+
+[editable path="NavKeeper"]

@@ -4,7 +4,6 @@ extends CanvasLayer
 
 
 func to(scene: String) -> void:
-    print("aniplayer: ", animation_player)
     animation_player.play("dissolve")
     await $AnimationPlayer.animation_finished
 

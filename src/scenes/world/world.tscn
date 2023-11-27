@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cbf0sakv3t4rt"]
+[gd_scene load_steps=23 format=3 uid="uid://cbf0sakv3t4rt"]
 
 [ext_resource type="Material" uid="uid://cpgbc1qnnwttt" path="res://src/materials/water.tres" id="1_bxjjq"]
 [ext_resource type="PackedScene" uid="uid://boll4qqpt711m" path="res://src/models/House.glb" id="2_y8wse"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="4_iml0i"]
 [ext_resource type="PackedScene" uid="uid://ckn4stg6qyjvy" path="res://src/models/LeafyTree.glb" id="5_ln5ul"]
 [ext_resource type="PackedScene" uid="uid://cufphe866trqu" path="res://src/models/Bush.glb" id="6_t3xd4"]
-[ext_resource type="PackedScene" uid="uid://c3oac3dk5enfy" path="res://src/player/movement/gateway.tscn" id="7_vxfnv"]
 [ext_resource type="PackedScene" uid="uid://ga0vggsoxklo" path="res://src/models/Land.glb" id="8_niq16"]
 [ext_resource type="PackedScene" uid="uid://cmhwcxqor7h3m" path="res://src/models/Sailboat.glb" id="9_eh6e3"]
 [ext_resource type="Script" path="res://src/scenes/world/sailboat.gd" id="10_fqymm"]
@@ -16,20 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cno58bjrk275p" path="res://src/models/Goat.glb" id="14_inufp"]
 [ext_resource type="PackedScene" uid="uid://do8mymkninsjh" path="res://src/models/Chicken.glb" id="15_8b25s"]
 [ext_resource type="PackedScene" uid="uid://ckvyk4ddg5xsx" path="res://src/models/Book.glb" id="16_nc40o"]
-
-[sub_resource type="Gradient" id="Gradient_duf2o"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_gr86e"]
-gradient = SubResource("Gradient_duf2o")
-fill_from = Vector2(1, 1)
-fill_to = Vector2(0.484211, 0.2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n0tqy"]
-albedo_color = Color(0.27451, 0.654902, 0.403922, 1)
-albedo_texture = SubResource("GradientTexture2D_gr86e")
-
-[sub_resource type="BoxMesh" id="BoxMesh_q4fku"]
-material = SubResource("StandardMaterial3D_n0tqy")
+[ext_resource type="PackedScene" uid="uid://bjv0vc26spvlo" path="res://src/player/movement/Nav.tscn" id="17_doxpp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tofsk"]
 
@@ -55,13 +41,6 @@ sky = SubResource("Sky_70lfm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.762761, -0.560042, 0.323339, -1.49013e-08, 0.499998, 0.866027, -0.64668, -0.660571, 0.381379, 0, 20, 0)
-shadow_enabled = true
-
-[node name="Land" type="MeshInstance3D" parent="."]
-transform = Transform3D(54.695, 0, 0, 0, 1, 0, 0, 0, 64.675, 0, -0.5, 11.214)
-visible = false
-mesh = SubResource("BoxMesh_q4fku")
-skeleton = NodePath("../Water")
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, -6.36723, -2.40479, 16.3253)
@@ -160,10 +139,6 @@ transform = Transform3D(-0.464249, 0, -0.185668, 0, 0.5, 0, 0.185668, 0, -0.4642
 [node name="Player" parent="." instance=ExtResource("4_iml0i")]
 transform = Transform3D(0.939693, -0.116978, -0.321394, 0, 0.939693, -0.34202, 0.34202, 0.321394, 0.883022, -6.73736, 0, 12.9857)
 
-[node name="Gateway" parent="." instance=ExtResource("7_vxfnv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.69475, 0.112152, 6.05669)
-to_scene = "res://src/scenes/rooms/LivingCorridor.tscn"
-
 [node name="Land2" parent="." instance=ExtResource("8_niq16")]
 transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 0.5, 0, -0.8, 0, -3.49691e-08, -3.14266, -3.28168, 28.3784)
 
@@ -243,3 +218,8 @@ transform = Transform3D(-0.0850169, 0, -0.996379, 0, 1, 0, 0.996379, 0, -0.08501
 
 [node name="Book" parent="." instance=ExtResource("16_nc40o")]
 transform = Transform3D(1, 0, 0, 0, 0.990046, -0.140746, 0, 0.140746, 0.990046, -1.79957, 1.10842, 14.347)
+
+[node name="NavKeeper" parent="." instance=ExtResource("17_doxpp")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.69432, 1.16517, 6.78312)
+to_scene = "res://src/scenes/rooms/LivingCorridor.tscn"
+description = "Keeper's Room"

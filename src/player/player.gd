@@ -44,7 +44,7 @@ func _process(delta):
 	if settings_menu.visible:
 		return
 
-    
+	
 	if Input.is_action_pressed("look_left"):
 		rotation_vel = rotation_speed
 

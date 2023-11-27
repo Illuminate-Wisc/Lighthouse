@@ -1,5 +1,5 @@
 extends Node3D
-@export var to_scene: String
+@export var show_info: String
 @onready var init_y := position.y
 
 var move: bool = false
@@ -24,4 +24,6 @@ func _on_focus_observer_unfocused():
 
 
 func _on_focus_observer_selected():
-	SceneSwitcher.to(to_scene)
+	var object = get_node(show_info) as UITextBox
+	object.visible = true
+	object.start()

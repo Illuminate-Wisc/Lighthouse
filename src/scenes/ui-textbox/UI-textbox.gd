@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+class_name UITextBox
+
+
 const CHAR_READ_RATE = 0.05 # Time it takes for each character to appear
 
 @onready var textbox_container: Control = $TextboxContainer
@@ -20,6 +23,9 @@ var text_queue = []
 
 
 func _ready():
+	pass
+	
+func start():
 	hide_textbox()
 	queue_text("Lighthouse inspectors also brought traveling libraries to the keepers and their families.")
 	queue_text("These libraries consisted of 50 books on topics including religion, poetry, history, and novels.")
@@ -33,6 +39,7 @@ func _process(delta: float) -> void:
 				display_text()
 		State.READING:
 			if Input.is_action_just_pressed("ui_accept"):
+				print("reading")
 				tween.stop()
 				# Skip to the end of the current text immediately
 				skip_to_end_of_text()

@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=16 format=3 uid="uid://oaw85ho08gsv"]
 
 [ext_resource type="PackedScene" uid="uid://bv3ttfub1blib" path="res://src/models/Living Corridors.glb" id="1_lxfa3"]
@@ -11,10 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://7nahr0p7ejyn" path="res://src/models/kaykit_furniture_bits/Assets/gltf/book_set.gltf" id="10_1he1a"]
 [ext_resource type="PackedScene" uid="uid://dq6llk1owxk3j" path="res://src/models/kaykit_furniture_bits/Assets/gltf/book_single.gltf" id="14_25qmv"]
 [ext_resource type="PackedScene" uid="uid://dxyukv1jqli5a" path="res://src/pointOfInterest/PointOfInterest.tscn" id="14_g6ype"]
+
 [ext_resource type="PackedScene" uid="uid://ckvyk4ddg5xsx" path="res://src/models/Book.glb" id="16_81l6w"]
 [ext_resource type="PackedScene" uid="uid://2ai2vxrxhxtq" path="res://src/models/Door.glb" id="17_8hvwk"]
 [ext_resource type="PackedScene" uid="uid://clfk8is4iv30i" path="res://src/models/kaykit_furniture_bits/Assets/gltf/chair_A_wood.gltf" id="19_wq3no"]
 [ext_resource type="PackedScene" uid="uid://bjv0vc26spvlo" path="res://src/player/movement/Nav.tscn" id="20_so4vl"]
+
 
 [node name="LivingCorridor" type="Node3D"]
 
@@ -89,6 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1.04, 0, 0, 0, 1, -0.993938, 0, -2.98848)
 [node name="chair_A_wood" parent="." instance=ExtResource("19_wq3no")]
 transform = Transform3D(-0.732026, 0, 0.163211, 0, 0.75, 0, -0.163211, 0, -0.732026, -1.80955, 0, 1.0621)
 
+
 [node name="chair_A_wood2" parent="." instance=ExtResource("19_wq3no")]
 transform = Transform3D(0.513229, 0, 0.546897, 0, 0.75, 0, -0.546897, 0, 0.513229, -1.76424, 0, -0.875535)
 
@@ -96,6 +100,7 @@ transform = Transform3D(0.513229, 0, 0.546897, 0, 0.75, 0, -0.546897, 0, 0.51322
 transform = Transform3D(-0.999893, 0, 0.0146254, 0, 1, 0, -0.0146254, 0, -0.999893, -0.918708, 1.05148, 2.11611)
 to_scene = "res://src/scenes/world/world.tscn"
 description = "Outside"
+
 
 [node name="Nav2" parent="." instance=ExtResource("20_so4vl")]
 transform = Transform3D(0.996627, 0, -0.0820605, 0, 1, 0, 0.0820605, 0, 0.996627, -0.892011, 1.05148, -2.27797)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://w57kkimc7rwv"]
+[gd_scene load_steps=13 format=3 uid="uid://w57kkimc7rwv"]
 
 [ext_resource type="PackedScene" uid="uid://dscb2my2bl1y0" path="res://src/scenes/rooms/wall_group.tscn" id="2_dar3f"]
 [ext_resource type="PackedScene" uid="uid://dhx4o8cpovuc4" path="res://src/models/lens_room_models/assets/glb/lens_room_light.glb" id="3_pv3iw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bls3tvej5btdj" path="res://src/models/lens_room_models/assets/glb/stairs.glb" id="5_rwxa7"]
 [ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="5_w1emc"]
 [ext_resource type="PackedScene" uid="uid://bjv0vc26spvlo" path="res://src/player/movement/Nav.tscn" id="6_y3y2x"]
+[ext_resource type="PackedScene" uid="uid://dxyukv1jqli5a" path="res://src/pointOfInterest/PointOfInterest.tscn" id="7_3ma8c"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_pxb5e"]
 radius = 20.0
@@ -77,3 +78,10 @@ omni_range = 17.632
 transform = Transform3D(2.50768, 0, 5.45083, 0, 6, 0, -5.45083, 0, 2.50768, -4.97052, 5.71242, 13.2207)
 to_scene = "res://src/scenes/rooms/LighthouseTowerInterior.tscn"
 description = "Bottom of Lighthouse"
+
+[node name="POI_Lens" parent="." instance=ExtResource("7_3ma8c")]
+transform = Transform3D(1.68753, 0, 1.07342, 0, 2, 0, -1.07342, 0, 1.68753, 10.6134, 7.30549, -0.0694776)
+description = "Fresnel Lens"
+poi_name = "Fresnel Lens"
+
+[connection signal="selected" from="POI_Lens" to="Player" method="_on_point_of_interest_selected"]

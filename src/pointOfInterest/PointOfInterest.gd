@@ -1,8 +1,12 @@
 extends Node3D
 
+signal selected(poi_name: String)
+
 @export var normal_opacity: float = 0.05
 @export var focused_opacity: float = 0.5
 @export var opacity_duration: float = 0.25
+@export var description: String
+@export var poi_name: String
 
 @onready var init_rot: float = rotation.y
 @onready var orb_mat: StandardMaterial3D = $Orb.get_active_material(0)
@@ -39,6 +43,7 @@ func tween_opacity(to_opacity: float, duration: float = opacity_duration):
 
 
 func _on_focus_observer_focused():
+	# TODO: play sound
 	tween_opacity(focused_opacity)
 
 
@@ -47,4 +52,5 @@ func _on_focus_observer_unfocused():
 
 
 func _on_focus_observer_selected():
-	pass # TODO
+	# TODO?: play sound
+	selected.emit(poi_name)

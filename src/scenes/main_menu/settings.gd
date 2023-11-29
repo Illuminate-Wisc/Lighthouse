@@ -1,13 +1,13 @@
 extends MarginContainer
 class_name Settings
 
-signal exit_button_signal
+signal opened
+signal closed
 
 
 var main_theme := preload("res://src/ui/themes/main/main_theme.tres")
 var user_text_bg := preload("res://src/ui/themes/main/panel/user_text_background_panel.tres")
 
-@onready var root_node := ($PanelContainer).owner
 @onready var font_size_slider := $PanelContainer/PaddedContainer/SettingsContainer/FontSizeSlider
 @onready var font_color_picker := $PanelContainer/PaddedContainer/SettingsContainer/GridContainer/FontColorPicker
 @onready var background_color_picker := $PanelContainer/PaddedContainer/SettingsContainer/GridContainer/BackgroundColorPicker
@@ -22,11 +22,17 @@ func _ready():
 
 func _process(_delta):
     if Input.is_action_just_pressed("ui_cancel"):
-        root_node.visible = not root_node.visible
+        if visible:
+            visible = false
+            closed.emit()
+        else:
+            visible = true
+            opened.emit()
 
 
 func _on_exit_button_pressed():
-    exit_button_signal.emit()
+    visible = false
+    closed.emit()
 
 
 func _on_font_size_slider_value_changed(value):

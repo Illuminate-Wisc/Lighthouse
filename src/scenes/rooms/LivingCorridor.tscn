@@ -59,8 +59,10 @@ transform = Transform3D(0.5, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -1.74419, -0.00091981
 [node name="book_set" parent="." instance=ExtResource("10_1he1a")]
 transform = Transform3D(-1.19069e-09, 0.0408598, -0.998515, -0.5, -3.27835e-08, -5.98144e-16, -2.18232e-08, 0.748886, 0.0544796, 1.93787, 0.676892, 2.29533)
 
-[node name="PointOfInterest" parent="." instance=ExtResource("14_g6ype")]
+[node name="POI_Books" parent="." instance=ExtResource("14_g6ype")]
 transform = Transform3D(-0.48643, 0, -0.115696, 0, 0.5, 0, 0.115696, 0, -0.48643, 1.43, 1.1, 2.304)
+description = "Books"
+poi_name = "Books"
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="."]
 transform = Transform3D(0.998215, 0, 0.0597245, 0, 1, 0, -0.0597245, 0, 0.998215, 1.7924, 1.52405, -0.00735462)
@@ -100,3 +102,5 @@ description = "Outside"
 transform = Transform3D(0.996627, 0, -0.0820605, 0, 1, 0, 0.0820605, 0, 0.996627, -0.892011, 1.05148, -2.27797)
 to_scene = "res://src/scenes/rooms/LighthouseTowerInterior.tscn"
 description = "Bottom of Lighthouse"
+
+[connection signal="selected" from="POI_Books" to="Player" method="_on_point_of_interest_selected"]

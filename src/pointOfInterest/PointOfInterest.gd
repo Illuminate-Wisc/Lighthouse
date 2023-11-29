@@ -1,29 +1,50 @@
 extends Node3D
-@export var show_info: String
-@onready var init_y := position.y
 
-var move: bool = false
+@export var normal_opacity: float = 0.05
+@export var focused_opacity: float = 0.5
+@export var opacity_duration: float = 0.25
+
+@onready var init_rot: float = rotation.y
+@onready var orb_mat: StandardMaterial3D = $Orb.get_active_material(0)
+
 var theta: float = 0
+var opacity_tween: Tween
 
 
 func _ready():
-	pass
+	orb_mat.albedo_color.a = normal_opacity
 
-func _physics_process(delta):
-	if move:
-		theta += PI / 2 * delta
-		position.y = init_y + sin(theta) / 8
+
+func _process(delta):
+	rotation.y = init_rot + sin(theta) / 2
+	theta += PI / 2 * delta
+
+
+func set_opacity(opacity: float):
+	orb_mat.albedo_color.a = opacity
+
+
+func tween_opacity(to_opacity: float, duration: float = opacity_duration):
+	if opacity_tween:
+		opacity_tween.stop()
+
+	opacity_tween = create_tween()
+
+	opacity_tween.tween_method(
+            set_opacity,
+            orb_mat.albedo_color.a,
+            to_opacity,
+            duration
+        )
 
 
 func _on_focus_observer_focused():
-	move = true
+	tween_opacity(focused_opacity)
 
 
 func _on_focus_observer_unfocused():
-	move = false
+	tween_opacity(normal_opacity)
 
 
 func _on_focus_observer_selected():
-	var object = get_node(show_info) as UITextBox
-	object.visible = true
-	object.start()
+	pass # TODO

@@ -7,14 +7,16 @@ class_name Player
 
 @export var desc_opacity_duration: float = 0.075
 
-@export var rotation_speed: float = 1
+@export var rotation_acc: float = 0.1
 @export var rotation_min_vel: float = 0.1
-@export var rotation_damping: float = 0.8
+@export var rotation_damping: float = 0.9
 
+@onready var enabled := true
 @onready var raycast: RayCast3D = $Camera3D/RayCast
-@onready var settings_menu := $CanvasLayer/Settings
-@onready var desc_label := $CanvasLayer/Hud/Desc/DescContainer/DescLabel
-@onready var desc_container := $CanvasLayer/Hud/Desc
+@onready var settings_menu := $SettingsLayer/Settings
+@onready var desc_label := $HUDLayer/Hud/Desc/DescContainer/DescLabel
+@onready var desc_container := $HUDLayer/Hud/Desc
+@onready var textbox := $TextboxLayer
 
 var rotation_vel = 0
 var pitch_tween: Tween
@@ -67,16 +69,15 @@ func _process(delta):
 		rotation_vel *= rotation_damping
 
 
-	if settings_menu.visible:
-		return
+    if not enabled:
+        return
 
 
-	
-	if Input.is_action_pressed("look_left"):
-		rotation_vel = rotation_speed
+    if Input.is_action_pressed("look_left"):
+        rotation_vel += rotation_acc
 
-	if Input.is_action_pressed("look_right"):
-		rotation_vel = -rotation_speed
+    if Input.is_action_pressed("look_right"):
+        rotation_vel -= rotation_acc
 
 
 	if Input.is_action_pressed("look_down"):
@@ -104,6 +105,25 @@ func _on_ray_cast_changed_target(new_target: FocusObserver):
 		desc_label.text = description
 
 
-func _on_settings_exit_button_signal():
-	settings_menu.visible = false
+func _on_point_of_interest_selected(poi_name: String):
+    if not enabled:
+        return
 
+    textbox.visible = true
+    enabled = false
+
+    textbox.start(poi_name)
+
+
+func _on_settings_opened():
+    enabled = false
+
+
+func _on_settings_closed():
+    if not textbox.visible:
+        enabled = true
+
+
+func _on_textbox_layer_finished():
+    textbox.visible = false
+    enabled = true

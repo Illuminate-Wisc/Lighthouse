@@ -1,25 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxyukv1jqli5a"]
+[gd_scene load_steps=7 format=3 uid="uid://dxyukv1jqli5a"]
 
 [ext_resource type="Script" path="res://src/pointOfInterest/PointOfInterest.gd" id="1_bu47k"]
-[ext_resource type="PackedScene" uid="uid://bir05ignr5jhx" path="res://src/pointOfInterest/questionMark.glb" id="1_tsfwn"]
+[ext_resource type="PackedScene" uid="uid://bir05ignr5jhx" path="res://src/models/questionMark.glb" id="1_tsfwn"]
 [ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="2_504qw"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ng6ce"]
-size = Vector3(1.3406, 18.9053, 1)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_clwxt"]
+height = 4.43685
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_regpm"]
+transparency = 1
+cull_mode = 1
+albedo_color = Color(1, 1, 1, 0.196078)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yk1cf"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_regpm")
 
 [node name="PointOfInterest" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("1_bu47k")
 
 [node name="questionMark" parent="." instance=ExtResource("1_tsfwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172929, -0.323471, 0)
 
 [node name="FocusObserver" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.175869, 0, 0)
 collision_layer = 3
 script = ExtResource("2_504qw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FocusObserver"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_ng6ce")
+shape = SubResource("CylinderShape3D_clwxt")
+
+[node name="Orb" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_yk1cf")
 
 [connection signal="focused" from="FocusObserver" to="." method="_on_focus_observer_focused"]
 [connection signal="selected" from="FocusObserver" to="." method="_on_focus_observer_selected"]

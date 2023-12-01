@@ -69,15 +69,15 @@ func _process(delta):
 		rotation_vel *= rotation_damping
 
 
-    if not enabled:
-        return
+	if not enabled:
+		return
 
 
-    if Input.is_action_pressed("look_left"):
-        rotation_vel += rotation_acc
+	if Input.is_action_pressed("look_left"):
+		rotation_vel += rotation_acc
 
-    if Input.is_action_pressed("look_right"):
-        rotation_vel -= rotation_acc
+	if Input.is_action_pressed("look_right"):
+		rotation_vel -= rotation_acc
 
 
 	if Input.is_action_pressed("look_down"):
@@ -106,24 +106,24 @@ func _on_ray_cast_changed_target(new_target: FocusObserver):
 
 
 func _on_point_of_interest_selected(poi_name: String):
-    if not enabled:
-        return
+	if not enabled:
+		return
 
-    textbox.visible = true
-    enabled = false
+	textbox.visible = true
+	enabled = false
 
-    textbox.start(poi_name)
+	textbox.start(poi_name)
 
 
 func _on_settings_opened():
-    enabled = false
+	enabled = false
 
 
 func _on_settings_closed():
-    if not textbox.visible:
-        enabled = true
+	if not textbox.visible:
+		enabled = true
 
 
 func _on_textbox_layer_finished():
-    textbox.visible = false
-    enabled = true
+	textbox.visible = false
+	enabled = true

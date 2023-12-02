@@ -95,29 +95,21 @@ size_flags_stretch_ratio = 0.2
 layout_mode = 2
 columns = 2
 
-[node name="FontColorLabel" type="Label" parent="PanelContainer/PaddedContainer/SettingsContainer/GridContainer"]
+[node name="DarkModeOptionButton2" type="Label" parent="PanelContainer/PaddedContainer/SettingsContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"HeaderMedium"
-text = "Font Color"
+text = "Dark Mode"
 
-[node name="TextBackgroundColorLabel" type="Label" parent="PanelContainer/PaddedContainer/SettingsContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"HeaderMedium"
-text = "Text Background Color"
-
-[node name="FontColorPicker" type="ColorPickerButton" parent="PanelContainer/PaddedContainer/SettingsContainer/GridContainer"]
+[node name="DarkModeOptionButton" type="OptionButton" parent="PanelContainer/PaddedContainer/SettingsContainer/GridContainer"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-color = Color(1, 1, 1, 1)
-
-[node name="BackgroundColorPicker" type="ColorPickerButton" parent="PanelContainer/PaddedContainer/SettingsContainer/GridContainer"]
-custom_minimum_size = Vector2(200, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-color = Color(0.168627, 0.188235, 0.231373, 1)
+item_count = 2
+popup/item_0/text = "On"
+popup/item_0/id = 0
+popup/item_1/text = "Off"
+popup/item_1/id = 1
 
 [node name="spacer4" type="Control" parent="PanelContainer/PaddedContainer/SettingsContainer"]
 layout_mode = 2
@@ -137,6 +129,5 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [connection signal="value_changed" from="PanelContainer/PaddedContainer/SettingsContainer/FontSizeSlider" to="." method="_on_font_size_slider_value_changed"]
-[connection signal="color_changed" from="PanelContainer/PaddedContainer/SettingsContainer/GridContainer/FontColorPicker" to="." method="_on_font_color_picker_color_changed"]
-[connection signal="color_changed" from="PanelContainer/PaddedContainer/SettingsContainer/GridContainer/BackgroundColorPicker" to="." method="_on_background_color_picker_color_changed"]
+[connection signal="item_selected" from="PanelContainer/PaddedContainer/SettingsContainer/GridContainer/DarkModeOptionButton" to="." method="_on_dark_mode_option_button_item_selected"]
 [connection signal="pressed" from="PanelContainer/PaddedContainer/SettingsContainer/ExitButton" to="." method="_on_exit_button_pressed"]

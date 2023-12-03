@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cno58bjrk275p" path="res://src/models/Goat.glb" id="14_inufp"]
 [ext_resource type="PackedScene" uid="uid://do8mymkninsjh" path="res://src/models/Chicken.glb" id="15_8b25s"]
 [ext_resource type="PackedScene" uid="uid://ckvyk4ddg5xsx" path="res://src/models/Book.glb" id="16_nc40o"]
-[ext_resource type="PackedScene" uid="uid://bjv0vc26spvlo" path="res://src/player/movement/Nav.tscn" id="17_doxpp"]
+[ext_resource type="PackedScene" path="res://src/player/movement/Nav.tscn" id="17_doxpp"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tofsk"]
 
@@ -223,3 +223,4 @@ transform = Transform3D(1, 0, 0, 0, 0.990046, -0.140746, 0, 0.140746, 0.990046, 
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.69432, 1.16517, 6.78312)
 to_scene = "res://src/scenes/rooms/LivingCorridor.tscn"
 description = "Keeper's Room"
+sound = "DoorSound"

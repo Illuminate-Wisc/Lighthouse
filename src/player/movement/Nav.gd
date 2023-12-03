@@ -5,6 +5,7 @@ extends Node3D
 @export var normal_opacity: float = 0.05
 @export var focused_opacity: float = 0.5
 @export var opacity_duration: float = 0.25
+@export var sound: String
 
 @onready var orb_mat: StandardMaterial3D = $Orb.get_active_material(0)
 @onready var arrow := $Arrow

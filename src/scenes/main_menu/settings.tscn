@@ -81,7 +81,7 @@ text = "16 px"
 custom_minimum_size = Vector2(500, 30)
 layout_mode = 2
 min_value = 16.0
-max_value = 64.0
+max_value = 128.0
 step = 8.0
 value = 24.0
 

@@ -6,10 +6,14 @@ signal finished
 const CHAR_READ_RATE = 0.05 # Time it takes for each character to appear
 
 @onready var textbox_container: Control = $TextboxContainer
-@onready var start_symbol: Label = $TextboxContainer/MarginContainer/HBoxContainer/Start
-@onready var end_symbol: Label = $TextboxContainer/MarginContainer/HBoxContainer/End
-@onready var rich_label: RichTextLabel = $TextboxContainer/MarginContainer/HBoxContainer/Label
+@onready var start_symbol: Label = $TextboxContainer/MarginContainer/PanelContainer/HBoxContainer/Start
+@onready var end_symbol: Label = $TextboxContainer/MarginContainer/PanelContainer/HBoxContainer/End
+@onready var rich_label := $TextboxContainer/MarginContainer/PanelContainer/HBoxContainer/Label
+@onready var main_theme: Theme = preload("res://src/ui/themes/main/main_theme.tres")
+@onready var main_panel_style: StyleBox = preload("res://src/ui/themes/main/panel/user_text_background_panel.tres")
 
+
+	
 enum State {
 	READY,
 	READING,

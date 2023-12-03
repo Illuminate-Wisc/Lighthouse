@@ -1,64 +1,73 @@
 [gd_scene load_steps=3 format=3 uid="uid://crknoji4ser47"]
 
 [ext_resource type="Script" path="res://src/scenes/ui-textbox/UI-textbox.gd" id="1_cdoxw"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq2po"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.968627, 0.968627, 0.968627, 1)
+[ext_resource type="Theme" uid="uid://bm780b5r6xff3" path="res://src/ui/themes/main/main_theme.tres" id="2_mtout"]
 
 [node name="UI-textbox" type="CanvasLayer"]
 script = ExtResource("1_cdoxw")
+metadata/_edit_vertical_guides_ = [-1093.0]
 
-[node name="TextboxContainer" type="MarginContainer" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -400.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="Panel" type="Panel" parent="TextboxContainer"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pq2po")
-
-[node name="MarginContainer" type="MarginContainer" parent="TextboxContainer"]
-layout_mode = 2
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_top = 664.0
+offset_right = 16.0
+offset_bottom = 680.0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Panel" type="Panel" parent="TextboxContainer/MarginContainer"]
-layout_mode = 2
+[node name="TextboxContainer" type="ScrollContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -699.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_mtout")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TextboxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
 
-[node name="Start" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="TextboxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_type_variation = &"UserTextBackground"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Start" type="Label" parent="TextboxContainer/MarginContainer/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_vertical = 0
+theme_type_variation = &"UserTextFont"
 theme_override_font_sizes/font_size = 55
 text = "
 "
 
-[node name="Label" type="RichTextLabel" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="TextboxContainer/MarginContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 80
+theme = ExtResource("2_mtout")
+theme_type_variation = &"UserTextFont"
+autowrap_mode = 2
 
-[node name="End" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
+[node name="End" type="Label" parent="TextboxContainer/MarginContainer/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_vertical = 8
+theme_type_variation = &"UserTextFont"
 theme_override_font_sizes/font_size = 55
+horizontal_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

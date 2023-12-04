@@ -80,10 +80,10 @@ text = "16 px"
 [node name="FontSizeSlider" type="HSlider" parent="PanelContainer/PaddedContainer/SettingsContainer"]
 custom_minimum_size = Vector2(500, 30)
 layout_mode = 2
-min_value = 16.0
+min_value = 32.0
 max_value = 128.0
-step = 8.0
-value = 24.0
+step = 48.0
+value = 32.0
 
 [node name="spacer3" type="Control" parent="PanelContainer/PaddedContainer/SettingsContainer"]
 visible = false

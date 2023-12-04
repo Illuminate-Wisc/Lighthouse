@@ -31,9 +31,11 @@ transform = Transform3D(-8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, 0, 0.2, 
 
 [node name="DoorSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_h5w1q")
+volume_db = -6.0
 
 [node name="StairStepSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_6p3g3")
+volume_db = -6.0
 
 [connection signal="focused" from="FocusObserver" to="." method="_on_focus_observer_focused"]
 [connection signal="selected" from="FocusObserver" to="." method="_on_focus_observer_selected"]

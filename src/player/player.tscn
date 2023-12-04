@@ -254,6 +254,7 @@ visible = false
 
 [node name="DingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_dnd3a")
+volume_db = -6.0
 
 [connection signal="changed_target" from="Camera3D/RayCast" to="." method="_on_ray_cast_changed_target"]
 [connection signal="finished" from="TextboxLayer" to="." method="_on_textbox_layer_finished"]

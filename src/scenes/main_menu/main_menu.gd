@@ -7,24 +7,17 @@ extends Control
 @onready var settings = $Settings
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if Input.is_action_just_pressed("ui_cancel"):
-		if main_buttons_container.visible == false:
-			main_buttons_container.visible = true
-		else:
-			main_buttons_container.visible = false
-
-
-# go to the settings menu
 func _on_settings_pressed():
 	main_buttons_container.visible = false
 	settings.visible = true
 
 
-func _on_return_button_pressed():
+func _on_settings_opened():
+	main_buttons_container.visible = false
+
+
+func _on_settings_closed():
 	main_buttons_container.visible = true
-	settings.visible = false
 
 
 func _on_start_pressed():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://t2jpofj28c67"]
+[gd_scene load_steps=13 format=3 uid="uid://t2jpofj28c67"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_6m7cw"]
 [ext_resource type="Script" path="res://src/player/raycast.gd" id="2_nde7q"]
@@ -9,9 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cjyxx74ydckc4" path="res://src/scenes/main_menu/settings.tscn" id="9_s07dc"]
 [ext_resource type="Texture2D" uid="uid://bnhe866i00kxo" path="res://src/images/Keyboard Icons/Arrow_Right_Key_Light.png" id="9_vqoh3"]
 [ext_resource type="Texture2D" uid="uid://1rejoyahy8hm" path="res://src/images/Keyboard Icons/Arrow_Up_Key_Light.png" id="10_wajyt"]
-[ext_resource type="AudioStream" uid="uid://c0l6akkrskbup" path="res://src/sounds/squeaky-door-open-113212.mp3" id="11_iewk0"]
 [ext_resource type="Texture2D" uid="uid://dqpwnjei87d6c" path="res://src/images/Keyboard Icons/Space_Key_Light.png" id="11_kme07"]
-[ext_resource type="AudioStream" uid="uid://cixp2i8n3u87d" path="res://src/sounds/metal-stairs-foot-steps-29688.mp3" id="12_j2dgg"]
+[ext_resource type="AudioStream" uid="uid://b83njfpj4pxho" path="res://src/sounds/ding-36029.mp3" id="13_dnd3a"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sv4qp"]
 
@@ -205,11 +204,8 @@ vertical_alignment = 1
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("9_s07dc")]
 visible = false
 
-[node name="DoorSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_iewk0")
-
-[node name="StairStepSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_j2dgg")
+[node name="DingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_dnd3a")
 
 [connection signal="changed_target" from="Camera3D/RayCast" to="." method="_on_ray_cast_changed_target"]
 [connection signal="exit_button_signal" from="CanvasLayer/Settings" to="." method="_on_settings_exit_button_signal"]

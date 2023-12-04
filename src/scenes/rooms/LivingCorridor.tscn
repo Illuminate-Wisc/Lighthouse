@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvyk4ddg5xsx" path="res://src/models/Book.glb" id="16_81l6w"]
 [ext_resource type="PackedScene" uid="uid://2ai2vxrxhxtq" path="res://src/models/Door.glb" id="17_8hvwk"]
 [ext_resource type="PackedScene" uid="uid://clfk8is4iv30i" path="res://src/models/kaykit_furniture_bits/Assets/gltf/chair_A_wood.gltf" id="19_wq3no"]
-[ext_resource type="PackedScene" path="res://src/player/movement/Nav.tscn" id="20_so4vl"]
+[ext_resource type="PackedScene" uid="uid://dkp2m5q7nyj4p" path="res://src/player/movement/Nav.tscn" id="20_so4vl"]
 
 [node name="LivingCorridor" type="Node3D"]
 
@@ -95,10 +95,12 @@ transform = Transform3D(0.513229, 0, 0.546897, 0, 0.75, 0, -0.546897, 0, 0.51322
 transform = Transform3D(-0.999893, 0, 0.0146254, 0, 1, 0, -0.0146254, 0, -0.999893, -0.918708, 1.05148, 2.11611)
 to_scene = "res://src/scenes/world/world.tscn"
 description = "Outside"
-sound = "DoorSound"
+sound = "DingSound"
+click_sound = "DoorSound"
 
 [node name="Nav2" parent="." instance=ExtResource("20_so4vl")]
 transform = Transform3D(0.996627, 0, -0.0820605, 0, 1, 0, 0.0820605, 0, 0.996627, -0.892011, 1.05148, -2.27797)
 to_scene = "res://src/scenes/rooms/LighthouseTowerInterior.tscn"
 description = "Bottom of Lighthouse"
-sound = "DoorSound"
+sound = "DingSound"
+click_sound = "DoorSound"

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5qdtt3dyi04g" path="res://src/models/Sack.glb" id="5_jd8s4"]
 [ext_resource type="PackedScene" uid="uid://dcx8oe6ef87q2" path="res://src/models/SpiralStaircase.glb" id="6_cu767"]
 [ext_resource type="PackedScene" uid="uid://2ai2vxrxhxtq" path="res://src/models/Door.glb" id="8_2n0f5"]
-[ext_resource type="PackedScene" path="res://src/player/movement/Nav.tscn" id="9_4nmqg"]
+[ext_resource type="PackedScene" uid="uid://dkp2m5q7nyj4p" path="res://src/player/movement/Nav.tscn" id="9_4nmqg"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_5uktw"]
 flip_faces = true
@@ -115,13 +115,15 @@ transform = Transform3D(0.747636, 0, -0.162068, 0, 0.765, 0, 0.162068, 0, 0.7476
 transform = Transform3D(-1.96868, 0, -1.54087, 0, 2.5, 0, 1.54087, 0, -1.96868, 4.1482, 3.16695, -4.19262)
 to_scene = "res://src/scenes/rooms/Lens_room.tscn"
 description = "Lens Room"
-sound = "StairStepSound"
+sound = "DingSound"
+click_sound = "StairStepSound"
 
 [node name="NavKeeper" parent="." instance=ExtResource("9_4nmqg")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.0367024, 3.16695, -6.04526)
 to_scene = "res://src/scenes/rooms/LivingCorridor.tscn"
 description = "Keeper's Room"
-sound = "DoorSound"
+sound = "DingSound"
+click_sound = "DoorSound"
 
 [node name="Orb" parent="NavKeeper" index="1"]
 mesh = SubResource("SphereMesh_f7wqj")

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjv0vc26spvlo"]
+[gd_scene load_steps=9 format=3 uid="uid://dkp2m5q7nyj4p"]
 
 [ext_resource type="Script" path="res://src/player/movement/Nav.gd" id="1_ny60w"]
 [ext_resource type="PackedScene" uid="uid://bqrcl6eupf720" path="res://src/models/Arrow.glb" id="2_21n0h"]
 [ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="3_upcnp"]
+[ext_resource type="AudioStream" uid="uid://c0l6akkrskbup" path="res://src/sounds/squeaky-door-open-113212.mp3" id="4_h5w1q"]
+[ext_resource type="AudioStream" uid="uid://cixp2i8n3u87d" path="res://src/sounds/metal-stairs-foot-steps-29688.mp3" id="5_6p3g3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bu7uu"]
 size = Vector3(1.00468, 2.51794, 1)
@@ -33,6 +35,12 @@ mesh = SubResource("SphereMesh_cdxob")
 
 [node name="Arrow" parent="." instance=ExtResource("2_21n0h")]
 transform = Transform3D(-8.74228e-09, 0.2, 0, -0.2, -8.74228e-09, 0, 0, 0, 0.2, 0.0024067, -3.30891e-09, 0.0402295)
+
+[node name="DoorSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_h5w1q")
+
+[node name="StairStepSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_6p3g3")
 
 [connection signal="focused" from="FocusObserver" to="." method="_on_focus_observer_focused"]
 [connection signal="selected" from="FocusObserver" to="." method="_on_focus_observer_selected"]

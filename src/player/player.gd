@@ -6,6 +6,7 @@ class_name Player
 @export var default_pitch: float = 0.0
 
 @export var desc_opacity_duration: float = 0.075
+@export var desc_max_opacity: float = 0.98
 
 @export var rotation_acc: float = 0.1
 @export var rotation_min_vel: float = 0.1
@@ -16,6 +17,7 @@ class_name Player
 @onready var settings_menu := $SettingsLayer/Settings
 @onready var desc_label := $HUDLayer/Hud/Desc/DescContainer/DescLabel
 @onready var desc_container := $HUDLayer/Hud/Desc
+@onready var controls := $HUDLayer/Hud/Controls
 @onready var textbox := $TextboxLayer
 
 var rotation_vel = 0
@@ -101,7 +103,7 @@ func _on_ray_cast_changed_target(new_target: FocusObserver):
 	var description: String = new_target.get_parent().description
 
 	if description != "":
-		tween_desc_opacity(1)
+		tween_desc_opacity(desc_max_opacity)
 		desc_label.text = description
 
 
@@ -110,6 +112,7 @@ func _on_point_of_interest_selected(poi_name: String):
 		return
 
 	textbox.visible = true
+	controls.visible = false
 	enabled = false
 
 	textbox.start(poi_name)
@@ -118,12 +121,18 @@ func _on_point_of_interest_selected(poi_name: String):
 func _on_settings_opened():
 	enabled = false
 
+	if textbox.visible:
+		textbox.disable()
+
 
 func _on_settings_closed():
-	if not textbox.visible:
+	if textbox.visible:
+		textbox.enable()
+	else:
 		enabled = true
 
 
 func _on_textbox_layer_finished():
 	textbox.visible = false
+	controls.visible = true
 	enabled = true

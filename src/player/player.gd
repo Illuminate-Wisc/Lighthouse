@@ -96,7 +96,7 @@ func _on_ray_cast_changed_target(new_target: FocusObserver):
 		if has_node(sound):
 			var sound_obj = get_node(sound) as AudioStreamPlayer
 			sound_obj.stop() 
-      
+			
 	if new_target == null:
 		tween_desc_opacity(0)
 		return

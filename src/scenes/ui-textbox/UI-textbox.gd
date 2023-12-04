@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-class_name UITextBox
 
+signal finished
 
 const CHAR_READ_RATE = 0.05 # Time it takes for each character to appear
 
@@ -9,7 +9,6 @@ const CHAR_READ_RATE = 0.05 # Time it takes for each character to appear
 @onready var start_symbol: Label = $TextboxContainer/MarginContainer/HBoxContainer/Start
 @onready var end_symbol: Label = $TextboxContainer/MarginContainer/HBoxContainer/End
 @onready var rich_label: RichTextLabel = $TextboxContainer/MarginContainer/HBoxContainer/Label
-var tween: Tween
 
 enum State {
 	READY,
@@ -19,27 +18,29 @@ enum State {
 
 var current_state = State.READY
 var text_queue = []
+var tween: Tween
 
 
-
-func _ready():
-	pass
-	
-func start():
+func start(poi_name: String):
 	hide_textbox()
-	queue_text("Lighthouse inspectors also brought traveling libraries to the keepers and their families.")
-	queue_text("These libraries consisted of 50 books on topics including religion, poetry, history, and novels.")
-	queue_text("The libraries were delivered twice a year and were highly sought after by the keepers.")
-	queue_text("Lighthouse keepers would keep lists of what books they desired.")
 
-func _process(delta: float) -> void:
+	var info_lines = PointOfInterestData.get_info(poi_name)
+
+	if info_lines.is_empty():
+		finished.emit()
+		return
+
+	for line in info_lines:
+		queue_text(line)
+
+
+func _process(_delta: float) -> void:
 	match current_state:
 		State.READY:
 			if not text_queue.is_empty():
 				display_text()
 		State.READING:
 			if Input.is_action_just_pressed("ui_accept"):
-				print("reading")
 				tween.stop()
 				# Skip to the end of the current text immediately
 				skip_to_end_of_text()
@@ -47,10 +48,17 @@ func _process(delta: float) -> void:
 		State.FINISHED:
 			if Input.is_action_just_pressed("ui_accept"):
 				change_state(State.READY)
-				hide_textbox()
+				rich_label.text = ""
+				end_symbol.text = ""
+
+				if text_queue.is_empty():
+					textbox_container.visible = false
+					finished.emit()
+
 
 func queue_text(next_text: String) -> void:
 	text_queue.push_back(next_text)
+
 
 func hide_textbox() -> void:
 	start_symbol.text = ""
@@ -58,9 +66,11 @@ func hide_textbox() -> void:
 	rich_label.text = ""
 	textbox_container.visible = false
 
+
 func show_textbox() -> void:
 	start_symbol.text = "*"
 	textbox_container.visible = true
+
 
 func display_text() -> void:
 	var next_text = text_queue.pop_front()
@@ -74,14 +84,16 @@ func display_text() -> void:
 	tween.tween_property(rich_label, "visible_characters", total_characters, total_time)
 	tween.connect("finished", _on_tween_tween_completed)
 
-	
+
 func skip_to_end_of_text() -> void:
 	rich_label.visible_characters = rich_label.text.length()
 	change_state(State.FINISHED)
 	end_symbol.text = "v"
 
+
 func change_state(next_state: State) -> void:
 	current_state = next_state
+
 
 # Connect this in the editor or via code if you need to handle when the tween completes
 func _on_tween_tween_completed() -> void:

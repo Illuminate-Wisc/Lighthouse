@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bir05ignr5jhx"
-path="res://.godot/imported/questionMark.glb-eccb657177b38398a36290081daf1bdc.scn"
+path="res://.godot/imported/questionMark.glb-35cd9194202d48112bec7ccaa6ea712e.scn"
 
 [deps]
 
-source_file="res://src/pointOfInterest/questionMark.glb"
-dest_files=["res://.godot/imported/questionMark.glb-eccb657177b38398a36290081daf1bdc.scn"]
+source_file="res://src/models/questionMark.glb"
+dest_files=["res://.godot/imported/questionMark.glb-35cd9194202d48112bec7ccaa6ea712e.scn"]
 
 [params]
 

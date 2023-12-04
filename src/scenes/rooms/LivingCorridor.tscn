@@ -14,7 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://ckvyk4ddg5xsx" path="res://src/models/Book.glb" id="16_81l6w"]
 [ext_resource type="PackedScene" uid="uid://2ai2vxrxhxtq" path="res://src/models/Door.glb" id="17_8hvwk"]
 [ext_resource type="PackedScene" uid="uid://clfk8is4iv30i" path="res://src/models/kaykit_furniture_bits/Assets/gltf/chair_A_wood.gltf" id="19_wq3no"]
+
 [ext_resource type="PackedScene" uid="uid://dkp2m5q7nyj4p" path="res://src/player/movement/Nav.tscn" id="20_so4vl"]
+
 
 [node name="LivingCorridor" type="Node3D"]
 
@@ -59,8 +61,11 @@ transform = Transform3D(0.5, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -1.74419, -0.00091981
 [node name="book_set" parent="." instance=ExtResource("10_1he1a")]
 transform = Transform3D(-1.19069e-09, 0.0408598, -0.998515, -0.5, -3.27835e-08, -5.98144e-16, -2.18232e-08, 0.748886, 0.0544796, 1.93787, 0.676892, 2.29533)
 
-[node name="PointOfInterest" parent="." instance=ExtResource("14_g6ype")]
-transform = Transform3D(-0.486431, 0, -0.115696, 0, 0.5, 0, 0.115696, 0, -0.486431, 1.7157, 0.91255, 2.30358)
+
+[node name="POI_Books" parent="." instance=ExtResource("14_g6ype")]
+transform = Transform3D(-0.48643, 0, -0.115696, 0, 0.5, 0, 0.115696, 0, -0.48643, 1.43, 1.1, 2.304)
+description = "Books"
+poi_name = "Books"
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="."]
 transform = Transform3D(0.998215, 0, 0.0597245, 0, 1, 0, -0.0597245, 0, 0.998215, 1.7924, 1.52405, -0.00735462)
@@ -104,3 +109,5 @@ to_scene = "res://src/scenes/rooms/LighthouseTowerInterior.tscn"
 description = "Bottom of Lighthouse"
 sound = "DingSound"
 click_sound = "DoorSound"
+
+[connection signal="selected" from="POI_Books" to="Player" method="_on_point_of_interest_selected"]

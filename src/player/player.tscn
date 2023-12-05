@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://t2jpofj28c67"]
+[gd_scene load_steps=18 format=3 uid="uid://t2jpofj28c67"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_6m7cw"]
 [ext_resource type="Script" path="res://src/player/raycast.gd" id="2_nde7q"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://crknoji4ser47" path="res://src/scenes/ui-textbox/UI-textbox.tscn" id="10_aoj0d"]
 [ext_resource type="Texture2D" uid="uid://1rejoyahy8hm" path="res://src/images/Keyboard Icons/Arrow_Up_Key_Light.png" id="10_wajyt"]
 [ext_resource type="Texture2D" uid="uid://dqpwnjei87d6c" path="res://src/images/Keyboard Icons/Space_Key_Light.png" id="11_kme07"]
-[ext_resource type="AudioStream" uid="uid://b83njfpj4pxho" path="res://src/sounds/ding-36029.mp3" id="13_dnd3a"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sv4qp"]
 
@@ -162,7 +161,6 @@ texture = ExtResource("9_vqoh3")
 
 [node name="Controls" type="Node2D" parent="HUDLayer/Hud"]
 position = Vector2(1337, 643)
-scale = Vector2(1, 1)
 
 [node name="LookUp" type="TouchScreenButton" parent="HUDLayer/Hud/Controls"]
 position = Vector2(105, 40)
@@ -251,10 +249,6 @@ visible = false
 
 [node name="Settings" parent="SettingsLayer" instance=ExtResource("9_s07dc")]
 visible = false
-
-[node name="DingSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_dnd3a")
-volume_db = -6.0
 
 [connection signal="changed_target" from="Camera3D/RayCast" to="." method="_on_ray_cast_changed_target"]
 [connection signal="finished" from="TextboxLayer" to="." method="_on_textbox_layer_finished"]

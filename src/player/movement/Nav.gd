@@ -57,8 +57,5 @@ func _on_focus_observer_unfocused():
 
 func _on_focus_observer_selected():
 	
-	if click_sound != "" and has_node(click_sound):
-		var sound_obj = get_node(click_sound) as AudioStreamPlayer
-		sound_obj.play() 
-	await get_tree().create_timer(2).timeout
+	SoundPlayer.play_sound(click_sound)
 	SceneSwitcher.to(to_scene)

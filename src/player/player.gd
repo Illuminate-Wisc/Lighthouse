@@ -91,11 +91,14 @@ func _process(delta):
 
 
 func _on_ray_cast_changed_target(new_target: FocusObserver):
+	"""
 	# stop all sounds
 	for sound in sound_list:
 		if has_node(sound):
 			var sound_obj = get_node(sound) as AudioStreamPlayer
 			sound_obj.stop() 
+	"""
+	
 			
 	if new_target == null:
 		tween_desc_opacity(0)
@@ -108,7 +111,8 @@ func _on_ray_cast_changed_target(new_target: FocusObserver):
 		if description != "":
 			tween_desc_opacity(1)
 			desc_label.text = description
-			
+	
+	"""
 	# play the selected sound
 	if "sound" in new_target.get_parent():
 		var sound: String = new_target.get_parent().sound
@@ -116,6 +120,8 @@ func _on_ray_cast_changed_target(new_target: FocusObserver):
 		if sound != "" and has_node(sound):
 			var sound_obj = get_node(sound) as AudioStreamPlayer
 			sound_obj.play() 
+	"""
+	SoundPlayer.play_sound("DingSound")
 
 
 func _on_point_of_interest_selected(poi_name: String):

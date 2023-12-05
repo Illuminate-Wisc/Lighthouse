@@ -81,7 +81,7 @@ size_flags_stretch_ratio = 0.1
 [node name="HBoxContainer" type="HBoxContainer" parent="MainButtonsContainer"]
 layout_mode = 2
 
-[node name="Options" type="Button" parent="MainButtonsContainer/HBoxContainer"]
+[node name="Settings" type="Button" parent="MainButtonsContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"ButtonSecondary"
@@ -105,6 +105,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 
+[connection signal="closed" from="Settings" to="." method="_on_settings_closed"]
+[connection signal="opened" from="Settings" to="." method="_on_settings_opened"]
 [connection signal="pressed" from="MainButtonsContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="MainButtonsContainer/HBoxContainer/Options" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtonsContainer/HBoxContainer/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainButtonsContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

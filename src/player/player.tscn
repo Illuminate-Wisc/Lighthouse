@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://t2jpofj28c67"]
+[gd_scene load_steps=20 format=3 uid="uid://t2jpofj28c67"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_6m7cw"]
 [ext_resource type="Script" path="res://src/player/raycast.gd" id="2_nde7q"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://crknoji4ser47" path="res://src/scenes/ui-textbox/UI-textbox.tscn" id="10_aoj0d"]
 [ext_resource type="Texture2D" uid="uid://1rejoyahy8hm" path="res://src/images/Keyboard Icons/Arrow_Up_Key_Light.png" id="10_wajyt"]
 [ext_resource type="Texture2D" uid="uid://dqpwnjei87d6c" path="res://src/images/Keyboard Icons/Space_Key_Light.png" id="11_kme07"]
+[ext_resource type="Texture2D" uid="uid://bqctfymey0o51" path="res://src/images/Keyboard Icons/Esc_Key_Light.png" id="12_qkmyx"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sv4qp"]
 
@@ -28,6 +29,9 @@ size = Vector2(60, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ga7u6"]
 size = Vector2(110, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dla27"]
+size = Vector2(60, 60)
 
 [node name="Player" type="Node3D"]
 script = ExtResource("1_6m7cw")
@@ -68,78 +72,6 @@ offset_top = 648.0
 offset_right = 1553.0
 offset_bottom = 845.0
 columns = 2
-
-[node name="Space" type="TextureRect" parent="HUDLayer/Hud/Controls"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-texture = ExtResource("11_kme07")
-
-[node name="GridContainer3" type="GridContainer" parent="HUDLayer/Hud/Controls"]
-layout_mode = 2
-columns = 3
-
-[node name="spacer" type="Control" parent="HUDLayer/Hud/Controls/GridContainer3"]
-layout_mode = 2
-
-[node name="UpArrow" type="TextureRect" parent="HUDLayer/Hud/Controls/GridContainer3"]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-texture = ExtResource("10_wajyt")
-expand_mode = 2
-
-[node name="spacer2" type="Control" parent="HUDLayer/Hud/Controls/GridContainer3"]
-layout_mode = 2
-
-[node name="LeftArrow" type="TextureRect" parent="HUDLayer/Hud/Controls/GridContainer3"]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("8_q8rfx")
-expand_mode = 2
-
-[node name="DownArrow" type="TextureRect" parent="HUDLayer/Hud/Controls/GridContainer3"]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("7_5c3ff")
-expand_mode = 2
-
-[node name="RightARrow" type="TextureRect" parent="HUDLayer/Hud/Controls/GridContainer3"]
-custom_minimum_size = Vector2(70, 70)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("9_vqoh3")
-expand_mode = 2
-
-[node name="spacer3" type="Control" parent="HUDLayer/Hud/Controls/GridContainer3"]
-custom_minimum_size = Vector2(0, 11)
-layout_mode = 2
-
-[node name="spacer4" type="Control" parent="HUDLayer/Hud/Controls/GridContainer3"]
-custom_minimum_size = Vector2(0, 11)
-layout_mode = 2
-
-[node name="spacer5" type="Control" parent="HUDLayer/Hud/Controls/GridContainer3"]
-custom_minimum_size = Vector2(0, 11)
-layout_mode = 2
-
-[node name="LookAroundLabel" type="Label" parent="HUDLayer/Hud/Controls"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Look Around"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="InteractLabel" type="Label" parent="HUDLayer/Hud/Controls"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Interact"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Buttons" type="Node2D" parent="HUDLayer/Hud/Controls"]
 position = Vector2(201, -5)
@@ -220,7 +152,6 @@ pivot_offset = Vector2(20, 20)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-
 [node name="GridContainer3" type="GridContainer" parent="HUDLayer/Hud"]
 layout_mode = 1
 anchors_preset = 3
@@ -267,34 +198,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("9_vqoh3")
-
-[node name="Controls" type="Node2D" parent="HUDLayer/Hud"]
-position = Vector2(1337, 643)
-
-[node name="LookUp" type="TouchScreenButton" parent="HUDLayer/Hud/Controls"]
-position = Vector2(105, 40)
-shape = SubResource("RectangleShape2D_lswer")
-action = "look_up"
-
-[node name="LookLeft" type="TouchScreenButton" parent="HUDLayer/Hud/Controls"]
-position = Vector2(31, 112)
-shape = SubResource("RectangleShape2D_krnrk")
-action = "look_left"
-
-[node name="LookDown" type="TouchScreenButton" parent="HUDLayer/Hud/Controls"]
-position = Vector2(105, 112)
-shape = SubResource("RectangleShape2D_qvs7s")
-action = "look_down"
-
-[node name="LookRight" type="TouchScreenButton" parent="HUDLayer/Hud/Controls"]
-position = Vector2(178, 112)
-shape = SubResource("RectangleShape2D_twyt3")
-action = "look_right"
-
-[node name="Interact" type="TouchScreenButton" parent="HUDLayer/Hud/Controls"]
-position = Vector2(-103, 110)
-shape = SubResource("RectangleShape2D_ga7u6")
-action = "select"
 
 [node name="LookAroundLabel" type="Label" parent="HUDLayer/Hud"]
 layout_mode = 0
@@ -350,6 +253,28 @@ theme_type_variation = &"UserTextFont"
 text = "Description"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Options" type="Node2D" parent="HUDLayer/Hud"]
+
+[node name="InteractLabel" type="Label" parent="HUDLayer/Hud/Options"]
+offset_left = 114.0
+offset_top = 51.0
+offset_right = 242.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="HUDLayer/Hud/Options"]
+position = Vector2(75, 75)
+shape = SubResource("RectangleShape2D_dla27")
+action = "ui_cancel"
+
+[node name="EscKeyLight" type="Sprite2D" parent="HUDLayer/Hud/Options"]
+position = Vector2(75, 75)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_qkmyx")
 
 [node name="TextboxLayer" parent="." instance=ExtResource("10_aoj0d")]
 visible = false

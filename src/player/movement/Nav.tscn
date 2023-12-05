@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjv0vc26spvlo"]
+[gd_scene load_steps=7 format=3 uid="uid://dkp2m5q7nyj4p"]
 
 [ext_resource type="Script" path="res://src/player/movement/Nav.gd" id="1_ny60w"]
 [ext_resource type="PackedScene" uid="uid://bqrcl6eupf720" path="res://src/models/Arrow.glb" id="2_21n0h"]
-[ext_resource type="Material" uid="uid://cpwpem1i1ijdq" path="res://src/materials/orb.tres" id="3_fmbew"]
+[ext_resource type="Material" path="res://src/materials/orb.tres" id="3_fmbew"]
 [ext_resource type="Script" path="res://src/utils/focus_observer.gd" id="3_upcnp"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bu7uu"]

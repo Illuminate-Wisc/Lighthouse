@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://t2jpofj28c67"]
+[gd_scene load_steps=18 format=3 uid="uid://t2jpofj28c67"]
 
 [ext_resource type="Script" path="res://src/player/player.gd" id="1_6m7cw"]
 [ext_resource type="Script" path="res://src/player/raycast.gd" id="2_nde7q"]
@@ -161,7 +161,6 @@ texture = ExtResource("9_vqoh3")
 
 [node name="Controls" type="Node2D" parent="HUDLayer/Hud"]
 position = Vector2(1337, 643)
-scale = Vector2(1, 1)
 
 [node name="LookUp" type="TouchScreenButton" parent="HUDLayer/Hud/Controls"]
 position = Vector2(105, 40)

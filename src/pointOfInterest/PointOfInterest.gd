@@ -35,11 +35,11 @@ func tween_opacity(to_opacity: float, duration: float = opacity_duration):
 	opacity_tween = create_tween()
 
 	opacity_tween.tween_method(
-            set_opacity,
-            orb_mat.albedo_color.a,
-            to_opacity,
-            duration
-        )
+			set_opacity,
+			orb_mat.albedo_color.a,
+			to_opacity,
+			duration
+		)
 
 
 func _on_focus_observer_focused():

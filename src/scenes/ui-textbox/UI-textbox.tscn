@@ -1,64 +1,96 @@
-[gd_scene load_steps=3 format=3 uid="uid://crknoji4ser47"]
+[gd_scene load_steps=4 format=3 uid="uid://crknoji4ser47"]
 
 [ext_resource type="Script" path="res://src/scenes/ui-textbox/UI-textbox.gd" id="1_cdoxw"]
+[ext_resource type="Theme" uid="uid://bm780b5r6xff3" path="res://src/ui/themes/main/main_theme.tres" id="2_mtout"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq2po"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.968627, 0.968627, 0.968627, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_052bj"]
+size = Vector2(1600, 900)
 
 [node name="UI-textbox" type="CanvasLayer"]
 script = ExtResource("1_cdoxw")
+metadata/_edit_vertical_guides_ = [-1093.0]
 
-[node name="TextboxContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -400.0
+offset_top = -636.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme = ExtResource("2_mtout")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="Panel" type="Panel" parent="TextboxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_pq2po")
+size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="TextboxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/ScrollContainer"]
+self_modulate = Color(1, 1, 1, 0.980392)
+custom_minimum_size = Vector2(0, 164)
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_type_variation = &"UserTextBackground"
 
-[node name="Panel" type="Panel" parent="TextboxContainer/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ScrollContainer/PanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ScrollContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Start" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+[node name="Start" type="Label" parent="MarginContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_vertical = 0
+theme_type_variation = &"UserTextFont"
 theme_override_font_sizes/font_size = 55
 text = "
 "
 
-[node name="Label" type="RichTextLabel" parent="TextboxContainer/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 80
 
-[node name="End" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_mtout")
+theme_type_variation = &"UserTextFont"
+autowrap_mode = 2
+
+[node name="Tooltip" type="Label" parent="MarginContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.207843)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme = ExtResource("2_mtout")
+theme_type_variation = &"UserTextFontSmaller"
+text = "(Press Space to continue)"
+autowrap_mode = 2
+
+[node name="End" type="Label" parent="MarginContainer/ScrollContainer/PanelContainer/MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_vertical = 8
+theme_type_variation = &"UserTextFont"
 theme_override_font_sizes/font_size = 55
+horizontal_alignment = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MarginContainer"]
+position = Vector2(800, 184)
+shape = SubResource("RectangleShape2D_052bj")
+action = "ui_accept"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

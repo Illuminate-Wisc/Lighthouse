@@ -87,18 +87,6 @@ size_flags_horizontal = 3
 theme_type_variation = &"ButtonSecondary"
 text = "Settings"
 
-[node name="spacer5" type="Control" parent="MainButtonsContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.01
-
-[node name="Quit" type="Button" parent="MainButtonsContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"ButtonSecondary"
-text = "Quit"
-
 [node name="spacer3" type="Control" parent="MainButtonsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -109,4 +97,3 @@ size_flags_stretch_ratio = 0.4
 [connection signal="opened" from="Settings" to="." method="_on_settings_opened"]
 [connection signal="pressed" from="MainButtonsContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainButtonsContainer/HBoxContainer/Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="MainButtonsContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

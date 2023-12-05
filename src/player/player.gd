@@ -23,7 +23,7 @@ class_name Player
 var rotation_vel = 0
 var pitch_tween: Tween
 var desc_opacity_tween: Tween
-
+var sound_list = ["DoorSound", "StairStepSound"]
 
 func set_pitch(pitch: float):
 	rotation.x = pitch
@@ -93,23 +93,46 @@ func _process(delta):
 
 
 func _on_ray_cast_changed_target(new_target: FocusObserver):
+	"""
+	# stop all sounds
+	for sound in sound_list:
+		if has_node(sound):
+			var sound_obj = get_node(sound) as AudioStreamPlayer
+			sound_obj.stop() 
+	"""
+	
+			
 	if new_target == null:
 		tween_desc_opacity(0)
 		return
 
-	if "description" not in new_target.get_parent():
-		return
 
-	var description: String = new_target.get_parent().description
+	if "description" in new_target.get_parent():
+		var description: String = new_target.get_parent().description
+
 
 	if description != "":
 		tween_desc_opacity(desc_max_opacity)
 		desc_label.text = description
 
+	
+	"""
+	# play the selected sound
+	if "sound" in new_target.get_parent():
+		var sound: String = new_target.get_parent().sound
+
+		if sound != "" and has_node(sound):
+			var sound_obj = get_node(sound) as AudioStreamPlayer
+			sound_obj.play() 
+	"""
+	SoundPlayer.play_sound("DingSound")
+
+
 
 func _on_point_of_interest_selected(poi_name: String):
 	if not enabled:
 		return
+
 
 	textbox.visible = true
 	controls.visible = false

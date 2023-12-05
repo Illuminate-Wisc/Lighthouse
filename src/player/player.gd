@@ -109,11 +109,9 @@ func _on_ray_cast_changed_target(new_target: FocusObserver):
 
 	if "description" in new_target.get_parent():
 		var description: String = new_target.get_parent().description
-
-
-	if description != "":
-		tween_desc_opacity(desc_max_opacity)
-		desc_label.text = description
+		if description != "":
+			tween_desc_opacity(desc_max_opacity)
+			desc_label.text = description
 
 	
 	"""

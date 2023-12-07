@@ -8,7 +8,6 @@ var main_theme := preload("res://src/ui/themes/main/main_theme.tres")
 var user_text_bg := preload("res://src/ui/themes/main/panel/user_text_background_panel.tres")
 
 @onready var font_size_slider := $PanelContainer/PaddedContainer/SettingsContainer/FontSizeSlider
-@onready var font_size_readout := $PanelContainer/PaddedContainer/SettingsContainer/FontSizeReadout
 @onready var dark_mode_button := $PanelContainer/PaddedContainer/SettingsContainer/GridContainer/DarkMode
 @onready var light_mode_button := $PanelContainer/PaddedContainer/SettingsContainer/GridContainer/LightMode
 

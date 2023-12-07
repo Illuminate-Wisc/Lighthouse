@@ -5,9 +5,9 @@ extends Node
 @onready var audio_player_stairs = $AudioStreamStairs as AudioStreamPlayer
 
 
-
 var sounds = {}
-# Called when the node enters the scene tree for the first time.
+
+
 func _ready():
 	sounds = {
 		"DingSound": audio_player_ding,
@@ -15,10 +15,11 @@ func _ready():
 		"StairStepSound": audio_player_stairs
 	}
 
-func play_sound(sound: String):
-	sounds[sound].play()
-	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func play_sound(sound: String):
+	if sound == "DingSound":
+		sounds[sound].pitch_scale = 1 + randf() * 0.25
+	else:
+		sounds[sound].pitch_scale = 1 + randf() * 0.95
+
+	sounds[sound].play()

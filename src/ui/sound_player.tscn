@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbaxu7w4qd1w0"]
+
+[ext_resource type="Script" path="res://src/ui/sound_player.gd" id="1_0r6mu"]
+[ext_resource type="AudioStream" uid="uid://6nq0ey1qklov" path="res://src/data/audio/ding.mp3" id="2_qhbk5"]
+[ext_resource type="AudioStream" uid="uid://d21sj3miwrph0" path="res://src/data/audio/door.mp3" id="2_rxm44"]
+[ext_resource type="AudioStream" uid="uid://c276uwd12reu3" path="res://src/data/audio/stairs.mp3" id="4_vw5rf"]
+
+[node name="SoundPlayer" type="Node"]
+script = ExtResource("1_0r6mu")
+
+[node name="AudioStreamDoor" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rxm44")
+volume_db = -6.0
+pitch_scale = 0.9
+
+[node name="AudioStreamDing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qhbk5")
+volume_db = -6.0
+
+[node name="AudioStreamStairs" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vw5rf")
+volume_db = -2.0
+pitch_scale = 2.0

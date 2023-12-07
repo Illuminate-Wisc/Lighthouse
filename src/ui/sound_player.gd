@@ -18,8 +18,8 @@ func _ready():
 
 func play_sound(sound: String):
 	if sound == "DingSound":
-		sounds[sound].pitch_scale = 1 + randf() * 0.25
+		sounds[sound].pitch_scale = 1 + randf() * 0.1
 	else:
-		sounds[sound].pitch_scale = 1 + randf() * 0.95
+		sounds[sound].pitch_scale = 1.4 + randf() * 0.2
 
 	sounds[sound].play()

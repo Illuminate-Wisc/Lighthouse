@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Lighthouse</title>
+        <title>Illuminate Wisconsin</title>
         <meta charset="UTF-8">
+        <link rel="icon" href="index.icon.png">
+        <link rel="apple-touch-icon" href="index.apple-touch-icon.png">
         <style>
             :root {
                 --bgColor: white;
                 --textColor: #1f2c28;
-                --canvasBgColor: #1f2c28;
-                --shadowColor: rgba(0, 0, 0, 0.3);
                 --outlineColor: skyblue;
+                --canvasBgColor: #ddd;
             }
 
             @media (prefers-color-scheme: dark) {
                 :root {
-                    --bgColor: #0d1117;
+                    --bgColor: #0d1111;
                     --textColor: white;
-                    --shadowColor: rgba(255, 255, 255, 0.05);
                     --outlineColor: slategray;
+                    --canvasBgColor: #222;
                 }
             }
 
@@ -44,7 +45,7 @@
                 width: 100% !important;
                 height: 100% !important;
                 border-radius: inherit;
-                transition: box-shadow 0.3s;
+                z-index: 1;
             }
 
             canvas:focus {
@@ -59,20 +60,28 @@
                 aspect-ratio: 1600 / 900;
                 max-width: 90%;
                 border-radius: 10px;
-                box-shadow: 0 5px 4px var(--shadowColor);
             }
-            
-            h1 {
-                text-align: center;
+
+            #canvas-wrapper::after {
+                content: "Loading...";
+                position: absolute;
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+                font-weight: 900;
+                font-size: 3rem;
             }
+
         </style>
         <script src="app.js"></script>
     </head>
     <body>
         <main>
-            <h1>Lighthouse</h1>
             <div id="canvas-wrapper">
                 <canvas id="godot-canvas"></canvas>
+                <noscript>
+                    The lighthouse experience requires JavaScript to work
+                </noscript>
             </div>
         </main>
         <script src="index.js"></script>

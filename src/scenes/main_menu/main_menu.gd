@@ -1,10 +1,10 @@
-extends Control
+extends Node3D
 
 
 @export var start_scene = "res://src/scenes/world/world.tscn"
 
-@onready var main_buttons_container = $MainButtonsContainer as Control
-@onready var settings = $Settings
+@onready var main_buttons_container = $CanvasLayer/MainButtonsContainer
+@onready var settings = $CanvasLayer/Settings
 
 
 func _on_settings_pressed():

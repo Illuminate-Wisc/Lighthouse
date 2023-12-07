@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbaxu7w4qd1w0"]
+[gd_scene load_steps=6 format=3 uid="uid://bbaxu7w4qd1w0"]
 
 [ext_resource type="Script" path="res://src/ui/sound_player.gd" id="1_0r6mu"]
 [ext_resource type="AudioStream" uid="uid://d21sj3miwrph0" path="res://src/data/audio/door.mp3" id="2_rxm44"]
 [ext_resource type="AudioStream" uid="uid://bladl2t7itshm" path="res://src/data/audio/interface.mp3" id="3_k3nmb"]
 [ext_resource type="AudioStream" uid="uid://c276uwd12reu3" path="res://src/data/audio/stairs.mp3" id="4_vw5rf"]
+[ext_resource type="AudioStream" uid="uid://1271xgc5j8oi" path="res://src/data/audio/uiinteract.mp3" id="5_d8m0v"]
 
 [node name="SoundPlayer" type="Node"]
 script = ExtResource("1_0r6mu")
@@ -21,3 +22,7 @@ volume_db = -9.0
 stream = ExtResource("4_vw5rf")
 volume_db = -2.0
 pitch_scale = 2.0
+
+[node name="AudioStreamUI" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_d8m0v")
+volume_db = -9.0

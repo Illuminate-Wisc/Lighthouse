@@ -57,12 +57,14 @@ func _process(_delta: float) -> void:
 				display_text()
 		State.READING:
 			if Input.is_action_just_pressed("ui_accept"):
+				SoundPlayer.play_sound("UISound")
 				tween.stop()
 				# Skip to the end of the current text immediately
 				skip_to_end_of_text()
 				
 		State.FINISHED:
 			if Input.is_action_just_pressed("ui_accept"):
+				SoundPlayer.play_sound("UISound")
 				change_state(State.READY)
 				label.text = ""
 				end_symbol.text = ""

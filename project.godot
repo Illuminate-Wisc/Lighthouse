@@ -18,7 +18,7 @@ config/features=PackedStringArray("4.1")
 
 SceneSwitcher="*res://src/ui/scene_switcher.tscn"
 PointOfInterestData="*res://src/ui/point_of_interest_data.gd"
-SoundPlayer="*res://src/sounds/SoundPlayer.tscn"
+SoundPlayer="*res://src/ui/sound_player.tscn"
 
 [display]
 

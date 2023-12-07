@@ -10,9 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Lighthouse"
+config/name="Illuminate Wisconsin"
 run/main_scene="res://src/scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.1")
+config/icon="res://src/images/iw-icon.png"
 
 [autoload]
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bv0uhytwm4peh"]
 
 [ext_resource type="Script" path="res://src/ui/scene_switcher.gd" id="1_15kox"]
-[ext_resource type="Texture2D" path="res://src/images/iw-icon.png" id="2_jf4r1"]
+[ext_resource type="Texture2D" uid="uid://dxwaobyjhstaw" path="res://src/images/iw-icon.png" id="2_jf4r1"]
 [ext_resource type="Theme" uid="uid://bm780b5r6xff3" path="res://src/ui/themes/main/main_theme.tres" id="2_tbb2t"]
 
 [sub_resource type="Animation" id="Animation_rhlb3"]

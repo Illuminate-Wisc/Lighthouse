@@ -3,8 +3,8 @@
 [ext_resource type="Theme" uid="uid://bm780b5r6xff3" path="res://src/ui/themes/main/main_theme.tres" id="1_7kme3"]
 [ext_resource type="Script" path="res://src/scenes/main_menu/main_menu.gd" id="1_b0ypv"]
 [ext_resource type="PackedScene" uid="uid://cjyxx74ydckc4" path="res://src/scenes/main_menu/settings.tscn" id="3_u3p27"]
-[ext_resource type="Texture2D" path="res://src/images/iw-logo-centered.svg" id="5_168fo"]
-[ext_resource type="PackedScene" path="res://src/scenes/world/world_static.tscn" id="5_gnlmf"]
+[ext_resource type="Texture2D" uid="uid://caowburhf3qs2" path="res://src/images/iw-logo-centered.svg" id="5_168fo"]
+[ext_resource type="PackedScene" uid="uid://b2h3dmxiypwy2" path="res://src/scenes/world/world_static.tscn" id="5_gnlmf"]
 
 [node name="Interface" type="Node3D"]
 script = ExtResource("1_b0ypv")

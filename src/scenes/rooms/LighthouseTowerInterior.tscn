@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bx0hyovyryr5s"]
+[gd_scene load_steps=15 format=3 uid="uid://bx0hyovyryr5s"]
 
 [ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="2_g8mdv"]
 [ext_resource type="Material" uid="uid://dmt36u6uu6q8d" path="res://src/materials/Lighthouse_floor_mat.tres" id="3_co3bv"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dcx8oe6ef87q2" path="res://src/models/SpiralStaircase.glb" id="6_cu767"]
 [ext_resource type="PackedScene" uid="uid://2ai2vxrxhxtq" path="res://src/models/Door.glb" id="8_2n0f5"]
 [ext_resource type="PackedScene" uid="uid://dkp2m5q7nyj4p" path="res://src/player/movement/Nav.tscn" id="9_4nmqg"]
+[ext_resource type="PackedScene" uid="uid://dxyukv1jqli5a" path="res://src/pointOfInterest/PointOfInterest.tscn" id="9_rugif"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_5uktw"]
 flip_faces = true
@@ -133,5 +134,12 @@ transform = Transform3D(0.2, 2.13163e-15, 0, -1.84604e-15, 0.173205, -0.1, -1.06
 
 [node name="Door" parent="." instance=ExtResource("8_2n0f5")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, -7.8653)
+
+[node name="POI_Fuel" parent="." instance=ExtResource("9_rugif")]
+transform = Transform3D(0.491545, 0, 1.1493, 0, 1.25, 0, -1.1493, 0, 0.491545, -4.21461, 3.167, -1.69497)
+description = "Fuel"
+poi_name = "Fuel"
+
+[connection signal="selected" from="POI_Fuel" to="Player" method="_on_point_of_interest_selected"]
 
 [editable path="NavKeeper"]

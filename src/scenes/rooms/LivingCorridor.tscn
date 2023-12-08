@@ -64,6 +64,11 @@ transform = Transform3D(-0.48643, 0, -0.115696, 0, 0.5, 0, 0.115696, 0, -0.48643
 description = "Books"
 poi_name = "Books"
 
+[node name="POI_Keeper" parent="." instance=ExtResource("14_g6ype")]
+transform = Transform3D(-0.0224901, 0, 0.499494, 0, 0.5, 0, -0.499494, 0, -0.0224901, -1.36117, 1.1, 0.109885)
+description = "Keepers"
+poi_name = "Keepers"
+
 [node name="OmniLight3D5" type="OmniLight3D" parent="."]
 transform = Transform3D(0.998215, 0, 0.0597245, 0, 1, 0, -0.0597245, 0, 0.998215, 1.7924, 1.52405, -0.00735462)
 
@@ -108,3 +113,4 @@ sound = "DingSound"
 click_sound = "DoorSound"
 
 [connection signal="selected" from="POI_Books" to="Player" method="_on_point_of_interest_selected"]
+[connection signal="selected" from="POI_Keeper" to="Player" method="_on_point_of_interest_selected"]

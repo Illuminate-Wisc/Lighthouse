@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbf0sakv3t4rt"]
+[gd_scene load_steps=5 format=3 uid="uid://cbf0sakv3t4rt"]
 
 [ext_resource type="PackedScene" uid="uid://b2oxtcekt2buf" path="res://src/scenes/world/world_static.tscn" id="3_vvmj2"]
+[ext_resource type="PackedScene" uid="uid://dxyukv1jqli5a" path="res://src/pointOfInterest/PointOfInterest.tscn" id="4_fx74k"]
 [ext_resource type="PackedScene" uid="uid://t2jpofj28c67" path="res://src/player/player.tscn" id="4_iml0i"]
 [ext_resource type="PackedScene" uid="uid://dkp2m5q7nyj4p" path="res://src/player/movement/Nav.tscn" id="17_doxpp"]
 
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("4_iml0i")]
-transform = Transform3D(0.989273, -0.0499634, -0.137273, 0, 0.939693, -0.34202, 0.146083, 0.338351, 0.929612, -6.73736, 0, 12.9857)
+transform = Transform3D(0.969911, -0.0832692, -0.22878, -3.68533e-09, 0.939693, -0.34202, 0.243463, 0.331729, 0.911418, -6.73736, 0, 12.9857)
 
 [node name="NavKeeper" parent="." instance=ExtResource("17_doxpp")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.69432, 1.16517, 6.78312)
@@ -17,3 +18,22 @@ sound = "DingSound"
 click_sound = "DoorSound"
 
 [node name="World" parent="." instance=ExtResource("3_vvmj2")]
+
+[node name="POI_Animals" parent="." instance=ExtResource("4_fx74k")]
+transform = Transform3D(-0.241476, 0, 0.710063, 0, 0.75, 0, -0.710063, 0, -0.241476, -10.281, 1.5, 12.86)
+description = "Animals"
+poi_name = "Animals"
+
+[node name="POI_Supplies" parent="." instance=ExtResource("4_fx74k")]
+transform = Transform3D(-0.035173, 0, -0.749175, 0, 0.75, 0, 0.749175, 0, -0.035173, -3.4122, 1.5, 13.3483)
+description = "Supplies"
+poi_name = "Supplies"
+
+[node name="POI_Cana" parent="." instance=ExtResource("4_fx74k")]
+transform = Transform3D(0.749792, 0, -0.0176829, 0, 0.75, 0, 0.0176829, 0, 0.749792, -6.46794, 1.5, 9.16215)
+description = "Cana Island Lighthouse"
+poi_name = "Cana Island Lighthouse"
+
+[connection signal="selected" from="POI_Animals" to="Player" method="_on_point_of_interest_selected"]
+[connection signal="selected" from="POI_Supplies" to="Player" method="_on_point_of_interest_selected"]
+[connection signal="selected" from="POI_Cana" to="Player" method="_on_point_of_interest_selected"]

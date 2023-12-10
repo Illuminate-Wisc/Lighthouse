@@ -19,6 +19,7 @@ func _ready():
 		"BGSound": audio_player_BG,
 	}
 	audio_player_BG.play()
+	
 
 
 func play_sound(sound: String):
@@ -30,3 +31,13 @@ func play_sound(sound: String):
 		sounds[sound].pitch_scale = 1.4 + randf() * 0.2
 
 	sounds[sound].play()
+	
+func set_volume_bg(volume: float):
+	if volume <= -60:
+		audio_player_BG.set_stream_paused(true)
+	else:
+		audio_player_BG.set_stream_paused(false)
+	audio_player_BG.volume_db = volume
+		
+func get_volume_bg():
+	return audio_player_BG.volume_db

@@ -8,11 +8,13 @@ var main_theme := preload("res://src/ui/themes/main/main_theme.tres")
 var user_text_bg := preload("res://src/ui/themes/main/panel/user_text_background_panel.tres")
 
 @onready var font_size_slider := $PanelContainer/PaddedContainer/SettingsContainer/FontSizeSlider
+@onready var bgmusic_volume_slider := $PanelContainer/PaddedContainer/SettingsContainer/BGMusicVolumeSlider
 @onready var dark_mode_button := $PanelContainer/PaddedContainer/SettingsContainer/GridContainer/DarkMode
 @onready var light_mode_button := $PanelContainer/PaddedContainer/SettingsContainer/GridContainer/LightMode
 
 func _ready():
 	font_size_slider.value = main_theme.get_font_size("font_size", "UserTextFont")
+	bgmusic_volume_slider.value = SoundPlayer.get_volume_bg()
 	var is_dark_mode := main_theme.get_color("font_color","UserTextFont") == Color(1,1,1)
 	dark_mode_button.disabled = is_dark_mode
 	light_mode_button.disabled = not is_dark_mode
@@ -50,3 +52,7 @@ func _on_dark_mode_pressed():
 	user_text_bg.bg_color = Color(0.2, 0.2, 0.2)  # Dark gray background
 	dark_mode_button.disabled = true
 	light_mode_button.disabled = false	
+
+
+func _on_bg_music_volume_slider_value_changed(value):
+	SoundPlayer.set_volume_bg(value)
